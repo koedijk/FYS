@@ -6,6 +6,7 @@ void setup() {
   waves = new Waves();
   character = new Character();
   waves.waveSetup();
+  character.setupCharacter();
 }
 
 void draw() {

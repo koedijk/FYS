@@ -1,3 +1,5 @@
+Animation characterAnimation;
+
 public class Character
 {
   final char up = 'z';
@@ -5,35 +7,42 @@ public class Character
   final float lane1 = height / 2 + 30;
   final float lane2 = height / 2 + 130;
   final float lane3 = height / 2 + 230;
+  final float characterLane = 50;
   
+  float frameCounter = 0;
   float characterPositionx = 100;
-  float characterPositiony = lane2;
+  float characterPositiony = lane2-characterLane;
+  
+  public void setupCharacter()
+  {
+    characterAnimation = new Animation("gif/surfer/surfer", 9);
+  }
   
   public void moveCharacter()
   {
     if (key == up) {
-      if(characterPositiony == lane3)
+      if(characterPositiony == lane3-characterLane)
       {
-        characterPositiony = lane2;
+        characterPositiony = lane2-characterLane;
       }
-      else if(characterPositiony == lane2)
+      else if(characterPositiony == lane2-characterLane)
       {
-        characterPositiony = lane1;
+        characterPositiony = lane1-characterLane;
       }
     } 
     else if (key == down) {
-      if(characterPositiony == lane1)
+      if(characterPositiony == lane1-characterLane)
       {
-        characterPositiony = lane2;
+        characterPositiony = lane2-characterLane;
       }
-      else if(characterPositiony == lane2)
+      else if(characterPositiony == lane2-characterLane)
       {
-        characterPositiony = lane3;
+        characterPositiony = lane3-characterLane;
       }
     }
   }
   
   public void drawCharacter(){
-    rect(characterPositionx, characterPositiony, 16, 16);
+    characterAnimation.display(characterPositionx, characterPositiony);
   }
 }
