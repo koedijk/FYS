@@ -1,3 +1,5 @@
+Animation rockAnimation;
+
 public class Obstacle {
   float obstacleSpeed;
   float obstacleMaxSpeed;
@@ -10,6 +12,7 @@ public class Obstacle {
     obstacleSpeed = tempObstacleSpeed;
     obstacleMaxSpeed = obstacleSpeed*1.25;
     obstacleMinSpeed = obstacleSpeed*0.75;
+    rockAnimation = new Animation("gif/obstacles/rock/rock", 45);
   }
   
   public void moveObstacle() {
@@ -19,7 +22,7 @@ public class Obstacle {
     if (obstaclePositionx <= -12) {
       obstaclePositionx = width+12;
       obstaclePositiony = character.characterPositiony;
-      obstacleSpeed *= random(0.1, 80);
+      obstacleSpeed *= random(0.9, 1.1);
       if (obstacleSpeed > obstacleMaxSpeed) obstacleSpeed = obstacleMaxSpeed;
       if (obstacleSpeed < obstacleMinSpeed) obstacleSpeed = obstacleMinSpeed;
     }
@@ -32,6 +35,6 @@ public class Obstacle {
   }
   
   public void drawObstacle() {
-    rect(obstaclePositionx, obstaclePositiony, 16, 16);
+    rockAnimation.display(obstaclePositionx, obstaclePositiony);
   }
 }
