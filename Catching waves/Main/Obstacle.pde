@@ -1,18 +1,17 @@
-Animation rockAnimation;
-
 public class Obstacle {
   float obstacleSpeed;
   float obstacleMaxSpeed;
   float obstacleMinSpeed;
   float obstaclePositionx;
   float obstaclePositiony;
-  Obstacle (float tempObstaclePositionx, float tempObstaclePositiony, int tempObstacleSpeed) {
+  Animation rockAnimation;
+  Obstacle (float tempObstaclePositionx, float tempObstaclePositiony, int tempObstacleSpeed, Animation tempRockAnimation) {
     obstaclePositionx = tempObstaclePositionx+width;
     obstaclePositiony = tempObstaclePositiony;
     obstacleSpeed = tempObstacleSpeed;
     obstacleMaxSpeed = obstacleSpeed*1.25;
     obstacleMinSpeed = obstacleSpeed*0.75;
-    rockAnimation = new Animation("gif/obstacles/rock/rock", 45);
+    rockAnimation = tempRockAnimation;
   }
   
   public void moveObstacle() {
