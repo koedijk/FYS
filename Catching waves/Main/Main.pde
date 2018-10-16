@@ -1,7 +1,9 @@
 Waves waves;
 Character character;
 ObstacleController obstacleController;
+GameOverScreen gameOverScreen;
 ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
+boolean gameOver = false;
 
 //constants
 final char up = 'z';
@@ -18,7 +20,7 @@ void setup() {
   waves = new Waves();
   character = new Character();
   obstacleController = new ObstacleController();
-  
+  gameOverScreen = new GameOverScreen();
   //obstacle[0] = new Obstacle(24, lane1, 9);
   waves.waveSetup();
   character.setupCharacter();
@@ -35,6 +37,9 @@ void draw() {
   waves.drawWaves();
   character.drawCharacter();
   
+  if (gameOver) {
+    gameOverScreen.drawScreen();
+  }
 }
 
 void keyPressed(){

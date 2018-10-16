@@ -30,6 +30,7 @@ public class Obstacle {
     if ((obstaclePositionx-characterSpriteWidth/2 < character.characterPositionx+obstacleSpeed && obstaclePositionx-characterSpriteWidth/2 > character.characterPositionx) && 
         obstaclePositiony == character.characterPositiony) {
       print("LOL u DED ");
+      gameOver = true;
     }
   }
   

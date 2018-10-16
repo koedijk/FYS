@@ -10,7 +10,9 @@ public class ObstacleController {
     }
     //obstacles loop
     for (Obstacle obst : obstacles) {  //run scripts for all the obstacles
-      obst.moveObstacle();
+      if (!gameOver) {
+        obst.moveObstacle();
+      }
       obst.drawObstacle();
     }
   }

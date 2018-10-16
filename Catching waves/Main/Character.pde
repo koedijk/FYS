@@ -20,24 +20,26 @@ public class Character
   
   public void moveCharacter()
   {
-    if (key == up) {
-      if(characterPositiony == lane3-characterLane)
-      {
-        characterPositiony = lane2-characterLane;
-      }
-      else if(characterPositiony == lane2-characterLane)
-      {
-        characterPositiony = lane1-characterLane;
-      }
-    } 
-    else if (key == down) {
-      if(characterPositiony == lane1-characterLane)
-      {
-        characterPositiony = lane2-characterLane;
-      }
-      else if(characterPositiony == lane2-characterLane)
-      {
-        characterPositiony = lane3-characterLane;
+    if (!gameOver) {
+      if (key == up) {
+        if(characterPositiony == lane3-characterLane)
+        {
+          characterPositiony = lane2-characterLane;
+        }
+        else if(characterPositiony == lane2-characterLane)
+        {
+          characterPositiony = lane1-characterLane;
+        }
+      } 
+      else if (key == down) {
+        if(characterPositiony == lane1-characterLane)
+        {
+          characterPositiony = lane2-characterLane;
+        }
+        else if(characterPositiony == lane2-characterLane)
+        {
+          characterPositiony = lane3-characterLane;
+        }
       }
     }
   }
