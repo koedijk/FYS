@@ -4,7 +4,7 @@ public class ObstacleController {
   public void controlObstacles() {
     obstacleTimer++;
     if (obstacleTimer >= obstacleSpawnTime) {
-      obstacles.add(new Obstacle(24, lane1, 4));  //spawn object
+      obstacles.add(new Obstacle(24, character.characterPositiony, 4));  //spawn object
       obstacleSpawnTime *= 1.5;    //reset timer
       obstacleSpawnTime += 450;
     }
