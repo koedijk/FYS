@@ -50,4 +50,4 @@ class Animation {
     return images[0].width;
   }
 }
->>>>>>> Lanes
+>>>>>>> origin/Score
