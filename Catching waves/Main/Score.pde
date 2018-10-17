@@ -1,4 +1,4 @@
-class Score {
+/*class Score {
   
   float currentScore = 0;
   float gainScore = 0.1;
@@ -56,4 +56,4 @@ class Score {
     text("HighScore:",720,60);  
   }
   
-}
+}*/

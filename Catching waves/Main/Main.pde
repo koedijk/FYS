@@ -7,7 +7,7 @@ ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 boolean gameOver = false;
 
 HightlightButton button;
-Score score;
+//Score score;
 PFont font; 
 
 //constants
@@ -21,10 +21,10 @@ final float characterSpriteWidth = 100;
 
 void setup() {
   button = new HightlightButton();
-  score = new Score();
+  //score = new Score();
   size(800, 600);
   button.Setup();
-  score.Start();
+  //score.Start();
   frameRate(60);
   size(800, 600);
   waves = new Waves();
@@ -41,7 +41,7 @@ void setup() {
 
 void draw() {
   //button.Draw();
-  score.Update();
+  //score.Update();
   //showMenu();
   background(73, 149, 255);
   

@@ -11,7 +11,7 @@ public class Character
   
   float frameCounter = 0;
   float characterPositionx = 100;
-  float characterPositiony = lane2-characterLane;
+  float characterPositiony = lane2;
   
   public void setupCharacter()
   {
@@ -22,29 +22,29 @@ public class Character
   {
     if (!gameOver) {
       if (key == up) {
-        if(characterPositiony == lane3-characterLane)
+        if(characterPositiony == lane3)
         {
-          characterPositiony = lane2-characterLane;
+          characterPositiony = lane2;
         }
-        else if(characterPositiony == lane2-characterLane)
+        else if(characterPositiony == lane2)
         {
-          characterPositiony = lane1-characterLane;
+          characterPositiony = lane1;
         }
       } 
       else if (key == down) {
-        if(characterPositiony == lane1-characterLane)
+        if(characterPositiony == lane1)
         {
-          characterPositiony = lane2-characterLane;
+          characterPositiony = lane2;
         }
-        else if(characterPositiony == lane2-characterLane)
+        else if(characterPositiony == lane2)
         {
-          characterPositiony = lane3-characterLane;
+          characterPositiony = lane3;
         }
       }
     }
   }
   
   public void drawCharacter(){
-    characterAnimation.display(characterPositionx, characterPositiony);
+    characterAnimation.display(characterPositionx, characterPositiony-characterLane);
   }
 }
