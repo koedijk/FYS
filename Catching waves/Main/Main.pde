@@ -26,7 +26,6 @@ void setup() {
   button.Setup();
   score.Start();
   frameRate(60);
-  size(800, 600);
   waves = new Waves();
   character = new Character();
   miniGame = new Rythmic_Spawning();
@@ -40,9 +39,6 @@ void setup() {
 
 
 void draw() {
-  //button.Draw();
-  score.Update();
-  //showMenu();
   background(73, 149, 255);
   
   //obstacles
@@ -51,6 +47,7 @@ void draw() {
   waves.drawWaves();
   character.drawCharacter();
   miniGame.StartMinigame();
+  score.Update();
   //minigame start
   if(keyCode == 77)
   {
