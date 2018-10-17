@@ -19,7 +19,7 @@ public class ObstacleController {
           randomLane = character.lane3;
           break;
       }
-      obstacles.add(new Obstacle(24, randomLane, 4, new Animation("gif/obstacles/rock/rock", 45)));  //spawn object
+      obstacles.add(new Obstacle(24, randomLane, 4));  //spawn object
       obstacleSpawnTime *= 1.5;    //reset timer
       obstacleSpawnTime += 450;
     }
