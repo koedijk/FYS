@@ -1,4 +1,5 @@
 Waves waves;
+Rythmic_Spawning miniGame;
 Character character;
 ObstacleController obstacleController;
 GameOverScreen gameOverScreen;
@@ -19,6 +20,7 @@ void setup() {
   size(800, 600);
   waves = new Waves();
   character = new Character();
+  miniGame = new Rythmic_Spawning();
   obstacleController = new ObstacleController();
   gameOverScreen = new GameOverScreen();
   //obstacle[0] = new Obstacle(24, lane1, 9);
@@ -36,6 +38,12 @@ void draw() {
   
   waves.drawWaves();
   character.drawCharacter();
+  miniGame.StartMinigame();
+  //minigame start
+  if(keyCode == 77)
+  {
+    miniGame.gamePlaying = true;
+  }
   
   if (gameOver) {
     gameOverScreen.drawScreen();
