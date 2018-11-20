@@ -18,5 +18,7 @@ public class GameOverScreen {
     textAlign(RIGHT);
     text("Score:           ", width/2, height/2);
     text("Highscore:           ", width/2, height/2+24);
+    text(score.currentScore, width/2 + 24, height/2);
+    text(score.highScore, width/2 + 24, height/2 + 24);
   }
 }

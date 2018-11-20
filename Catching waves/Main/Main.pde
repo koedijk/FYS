@@ -55,6 +55,7 @@ void draw() {
   }
   
   if (gameOver) {
+    score.endGame = true;
     gameOverScreen.drawScreen();
   }
 }
