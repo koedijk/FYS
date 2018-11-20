@@ -5,10 +5,10 @@ ObstacleController obstacleController;
 GameOverScreen gameOverScreen;
 ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 boolean gameOver = false;
-
-HightlightButton button;
+MainMenu menu;
 Score score;
 PFont font; 
+Button button;
 
 //constants
 final char up = 'z';
@@ -20,10 +20,11 @@ final float characterSpriteHeight = 100;
 final float characterSpriteWidth = 100;
 
 void setup() {
-  button = new HightlightButton();
   score = new Score();
+  menu = new MainMenu();
+  button = new Button();
   size(800, 600);
-  button.Setup();
+  menu.Setup();
   score.Start();
   frameRate(60);
   waves = new Waves();
@@ -39,6 +40,12 @@ void setup() {
 
 
 void draw() {
+  if(menu.menuActive)
+  {
+    button.Draw();
+    menu.Draw();
+    return;
+  }
   background(73, 149, 255);
   
   //obstacles
@@ -61,15 +68,5 @@ void draw() {
 
 void keyPressed(){
   character.moveCharacter();
+  button.SelectButton();  
 }
-public void showMenu() 
-{  
-  background(255, 204, 0);
-  fill(0);
-  textSize(32);
-  text(" Your football program ", 150, 100, 3);
-  textSize(14);
-  text("Press 1 See chart football ", 100, 200);
-  text("Press 2 See football statistics ", 100, 220);
-  text("Press x to quit ", 100, 260);
-} 

@@ -24,7 +24,7 @@ class Score {
   
   private void AddScore()
   {    
-    currentScore += (gainScore * multiplier);
+    currentScore += (gainScore * multiplier); 
     String currentScoreString = str(currentScore);
     text(currentScoreString,720,40);
     if(currentScore > highScore)

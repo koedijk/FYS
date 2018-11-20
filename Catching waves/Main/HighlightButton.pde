@@ -1,87 +1,108 @@
-class HightlightButton
+class Button
 {
-  int rectX, rectY;      // Position of square button
-  int circleX, circleY;  // Position of circle button
-  int rectSize = 90;     // Diameter of rect
-  int circleSize = 93;   // Diameter of circle
-  color rectColor, circleColor, baseColor;
-  color rectHighlight, circleHighlight;
+  color rectColor, baseColor;
+  color rectHighlight;
   color currentColor;
-  boolean rectOver = false;
-  boolean circleOver = false;
-  
-  void Setup() {
-    rectColor = color(0);
-    rectHighlight = color(51);
-    circleColor = color(255);
-    circleHighlight = color(204);
-    baseColor = color(102);
-    currentColor = baseColor;
-    circleX = width/2+circleSize/2+10;
-    circleY = height/2;
-    rectX = width/2-rectSize-10;
-    rectY = height/2-rectSize/2;
-    ellipseMode(CENTER);
+  ArrayList<ButtonData> buttonList = new ArrayList<ButtonData>(); 
+  int index = 0;
+    
+  void Setup() 
+  {
+    rectColor = color(100);
+    rectHighlight = color(255);
+    buttonList.add(new ButtonData(400,250,150,50));
+    buttonList.add(new ButtonData(400,350,150,50));
+    ShowButton();
   }
   
-  void Draw() {
-    update(mouseX, mouseY);
-    background(currentColor);
-    
-    if (rectOver) {
-      fill(rectHighlight);
-    } else {
+  void Draw()
+  {
+    HighlightButton();
+    SelectButton(); 
+  }
+  
+
+  void ShowButton()
+  {
+    for(int i = 0; i < buttonList.size(); i++)
+    {
+      stroke(0);
+      strokeWeight(2);
+      rectMode(CENTER);
       fill(rectColor);
+      rect(buttonList.get(i).data.get(0),buttonList.get(i).data.get(1),buttonList.get(i).data.get(2),buttonList.get(i).data.get(3));
     }
-    stroke(255);
-    rect(rectX, rectY, rectSize, rectSize);
+  }
+  
+  void HighlightButton()
+  {         
     
-    if (circleOver) {
-      fill(circleHighlight);
-    } else {
-      fill(circleColor);
+    switch(index)
+    {
+      case 0:
+        fill(rectHighlight);
+        rect(buttonList.get(index).data.get(0),buttonList.get(index).data.get(1),buttonList.get(index).data.get(2),buttonList.get(index).data.get(3));
+        fill(rectColor);
+        rect(buttonList.get(1).data.get(0),buttonList.get(1).data.get(1),buttonList.get(index).data.get(2),buttonList.get(index).data.get(3));
+        break;
+      case 1:
+        fill(rectHighlight);
+        rect(buttonList.get(index).data.get(0),buttonList.get(index).data.get(1),buttonList.get(index).data.get(2),buttonList.get(index).data.get(3));
+        fill(rectColor);
+        rect(buttonList.get(0).data.get(0),buttonList.get(0).data.get(1),buttonList.get(index).data.get(2),buttonList.get(index).data.get(3));
+        break;
+      default:
+        ShowButton();
+        break;
     }
-    stroke(0);
-    ellipse(circleX, circleY, circleSize, circleSize);
+    
+    fill(10);
+    textAlign(CENTER,CENTER);
+    textSize(14);
+    text("Start Game",buttonList.get(0).data.get(0), buttonList.get(0).data.get(1));
+    
+    fill(10);
+    textAlign(CENTER,CENTER);
+    textSize(14);
+    text("Exit",buttonList.get(1).data.get(0), buttonList.get(1).data.get(1));
   }
   
-  void update(int x, int y) {
-    if ( overCircle(circleX, circleY, circleSize) ) {
-      circleOver = true;
-      rectOver = false;
-    } else if ( overRect(rectX, rectY, rectSize, rectSize) ) {
-      rectOver = true;
-      circleOver = false;
-    } else {
-      circleOver = rectOver = false;
+  void SelectButton()
+  {
+    if(keyCode == 40)
+    { 
+      index = 1;
     }
+    else if(keyCode == 38)
+    {
+      index = 0;
+    } 
+    
+    if(key == 32 && index == 0)
+    {
+      menu.menuActive = false;
+    }
+    else if(key == 32 && index == 1)
+    {
+       exit();
+    }
+    
+    
   }
   
-  void mousePressed() {
-    if (circleOver) {
-      currentColor = circleColor;
-    }
-    if (rectOver) {
-      currentColor = rectColor;
-    }
-  }
   
-  boolean overRect(int x, int y, int width, int height)  {
-    if (mouseX >= x && mouseX <= x+width && 
-        mouseY >= y && mouseY <= y+height) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-  
-  boolean overCircle(int x, int y, int diameter) {
-    float disX = x - mouseX;
-    float disY = y - mouseY;
-    if (sqrt(sq(disX) + sq(disY)) < diameter/2 ) {
-      return true;
-    } else {
-      return false;
-    }
+  class ButtonData
+  {
+    public IntList data;
+    
+    ButtonData(int posX, int posY, int sizeX, int sizeY)
+    {
+      data = new IntList();
+      int[] tempData = { posX,posY,sizeX,sizeY};     
+      for(int i = 0; i < tempData.length; i++ )
+      {
+        data.append(tempData[i]);
+      }
+    }      
   }
 }
