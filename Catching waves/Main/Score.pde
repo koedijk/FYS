@@ -16,7 +16,6 @@ class Score {
   void Update()
   {    
     AddScore();
-    scoreText();
   }
   
   private void AddScore()
@@ -28,18 +27,17 @@ class Score {
         text(lines[i],720,80 + 35*i);
       }
       scoreText();
-      currentScore += (gainScore * multiplier); 
+      currentScore += (gainScore * multiplier);
       String currentScoreString = str(currentScore);
       text(currentScoreString,720,40);
-    
-    if(currentScore > highScore)
-    {
-       highScore = currentScore;       
-       String newHighScore = str(highScore);
-       lines = split(newHighScore,' ');
-       saveStrings("HighScore.txt",lines);
-    }
-  }
+      if(currentScore > highScore)
+      {
+         highScore = currentScore;       
+         String newHighScore = str(highScore);
+         lines = split(newHighScore,' ');
+         saveStrings("HighScore.txt",lines);
+      }
+    }    
  }
   
   public void SetMultiplier(float i)
@@ -54,5 +52,4 @@ class Score {
     textSize(14);
     text("HighScore:",720,60);
   }
-  
 }

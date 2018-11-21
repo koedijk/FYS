@@ -24,7 +24,6 @@ class Game
       menu.Draw();
       return;
     }
-    score.endGame = true;
     
     background(73, 149, 255);
   
@@ -43,6 +42,7 @@ class Game
     
     if (gameOver) {
       gameOverScreen.drawScreen();
+      score.endGame = true;
     }
   }
   
