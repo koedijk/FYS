@@ -5,6 +5,7 @@ class Score {
   float multiplier = 1;
   int highScore = 0;
   String lines[];
+  boolean endGame = false;
   
   void Start()
   {
@@ -15,25 +16,28 @@ class Score {
   void Update()
   {    
     AddScore();
-    scoreText();
-    for(int i = 0; i < lines.length; i++)
-    {
-      text(lines[i],720,80 + 35*i);
-    }
   }
   
   private void AddScore()
-  {    
-    currentScore += (gainScore * multiplier);
-    String currentScoreString = str(currentScore);
-    text(currentScoreString,720,40);
-    if(currentScore > highScore)
+  {
+    if(!endGame)
     {
-       highScore = currentScore;       
-       String newHighScore = str(highScore);
-       lines = split(newHighScore,' ');
-       saveStrings("HighScore.txt",lines);
-    }
+      for(int i = 0; i < lines.length; i++)
+      {
+        text(lines[i],720,80 + 35*i);
+      }
+      scoreText();
+      currentScore += (gainScore * multiplier);
+      String currentScoreString = str(currentScore);
+      text(currentScoreString,720,40);
+      if(currentScore > highScore)
+      {
+         highScore = currentScore;       
+         String newHighScore = str(highScore);
+         lines = split(newHighScore,' ');
+         saveStrings("HighScore.txt",lines);
+      }
+    }    
   }
   
   public void SetMultiplier(float i)
