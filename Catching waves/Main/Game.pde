@@ -2,7 +2,7 @@ class Game
 {  
   void gameSetup()
   {
-    button = new HightlightButton();
+    button = new Button();
     score = new Score();
     button.Setup();
     score.Start();
@@ -18,6 +18,14 @@ class Game
   
   void drawGame()
   {
+    if(menu.menuActive)
+    {
+      button.Draw();
+      menu.Draw();
+      return;
+    }
+    score.endGame = true;
+    
     background(73, 149, 255);
   
     //obstacles

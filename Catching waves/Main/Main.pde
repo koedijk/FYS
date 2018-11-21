@@ -11,6 +11,7 @@ Tutorial tutorial = new Tutorial();
 Score score;
 PFont font; 
 Button button;
+Game game;
 
 //constants
 final char up = 'z';
@@ -22,6 +23,7 @@ final float characterSpriteHeight = 100;
 final float characterSpriteWidth = 100;
 
 void setup() {
+  game = new Game();
   menu = new MainMenu();
   button = new Button();
   size(800, 600);
@@ -30,16 +32,9 @@ void setup() {
   tutorial.tutorialSetup();
 }
 
-
-
-void draw() {
-  if(menu.menuActive)
-  {
-    button.Draw();
-    menu.Draw();
-    return;
-  }
-    score.endGame = true;
+void draw()
+{
+   game.drawGame();
 }
 
 void keyPressed(){

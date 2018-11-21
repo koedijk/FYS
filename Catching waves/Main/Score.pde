@@ -10,7 +10,7 @@ class Score {
   void Start()
   {
     lines = loadStrings("HighScore.txt");
-    highScore = Integer.parseInt(lines[0]);
+    //highScore = Integer.parseInt(lines[0]);
   }
   
   void Update()
@@ -43,6 +43,7 @@ class Score {
        saveStrings("HighScore.txt",lines);
     }
   }
+ }
   
   public void SetMultiplier(float i)
   {

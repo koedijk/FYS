@@ -12,7 +12,7 @@ class Tutorial
   String text = WELCOME_TEXT;
   void tutorialSetup()
   {
-    button = new HightlightButton();
+    button = new Button();
     score = new Score();
     button.Setup();
     score.Start();
