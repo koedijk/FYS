@@ -2,11 +2,11 @@ Waves waves;
 Rythmic_Spawning miniGame;
 Character character;
 ObstacleController obstacleController;
-GameOverScreen gameOverScreen;
 TutorialText tutorialText;
 ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 boolean gameOver = false;
 MainMenu menu;
+GameOverScreen gameOverScreen;
 Tutorial tutorial = new Tutorial();
 Score score;
 PFont font; 
@@ -29,6 +29,7 @@ void setup() {
   size(800, 600);
   menu.Setup();
   frameRate(60);
+  game.gameSetup();
   tutorial.tutorialSetup();
 }
 

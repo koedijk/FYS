@@ -1,6 +1,7 @@
 public class GameOverScreen {
   PFont fontLarge = createFont("Arial", 48, true);
   PFont fontSmall = createFont("Arial", 24, true);
+  
   void drawScreen() {
     
     color c = color(0, 126, 255, 102);
