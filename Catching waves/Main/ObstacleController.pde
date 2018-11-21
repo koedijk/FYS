@@ -2,10 +2,13 @@ public class ObstacleController {
   int obstacleTimer = 0;
   int obstacleSpawnTime = 100;
   float randomLane = 0;
+  int counter = 0;
   int  n = 1;
-  public void controlObstacles() {
+  public int controlObstacles() {
+    
     obstacleTimer++;
     if (obstacleTimer >= obstacleSpawnTime) {
+      
       n = (int)random(1, 3);
       switch(n)
       {
@@ -30,5 +33,6 @@ public class ObstacleController {
       }
       obst.drawObstacle();
     }
+    return counter;
   }
 }

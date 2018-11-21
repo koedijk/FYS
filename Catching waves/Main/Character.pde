@@ -43,6 +43,28 @@ public class Character
       }
     }
   }
+  public void moveCharacterUp()
+  {
+    if(characterPositiony == lane3)
+    {
+      characterPositiony = lane2;
+    }
+    else if(characterPositiony == lane2)
+    {
+      characterPositiony = lane1;
+    }
+  }
+  public void moveCharacterDown()
+  {
+    if(characterPositiony == lane1)
+    {
+      characterPositiony = lane2;
+    }
+    else if(characterPositiony == lane2)
+    {
+      characterPositiony = lane3;
+    }
+  }
   
   public void drawCharacter(){
     characterAnimation.display(characterPositionx, characterPositiony-characterLane);

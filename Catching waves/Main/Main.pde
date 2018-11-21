@@ -3,8 +3,10 @@ Rythmic_Spawning miniGame;
 Character character;
 ObstacleController obstacleController;
 GameOverScreen gameOverScreen;
+TutorialText tutorialText;
 ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 boolean gameOver = false;
+Tutorial tutorial = new Tutorial();
 
 HightlightButton button;
 Score score;
@@ -20,56 +22,18 @@ final float characterSpriteHeight = 100;
 final float characterSpriteWidth = 100;
 
 void setup() {
-  button = new HightlightButton();
-  score = new Score();
   size(800, 600);
-  button.Setup();
-  score.Start();
   frameRate(60);
-  waves = new Waves();
-  character = new Character();
-  miniGame = new Rythmic_Spawning();
-  obstacleController = new ObstacleController();
-  gameOverScreen = new GameOverScreen();
-  //obstacle[0] = new Obstacle(24, lane1, 9);
-  waves.waveSetup();
-  character.setupCharacter();
+  tutorial.tutorialSetup();
 }
 
 
 
 void draw() {
-  background(73, 149, 255);
-  
-  //obstacles
-  obstacleController.controlObstacles();
-  
-  waves.drawWaves();
-  character.drawCharacter();
-  miniGame.StartMinigame();
-  score.Update();
-  //minigame start
-  if(keyCode == 77)
-  {
-    miniGame.gamePlaying = true;
-  }
-  
-  if (gameOver) {
-    gameOverScreen.drawScreen();
-  }
+  tutorial.drawGame();
 }
 
 void keyPressed(){
-  character.moveCharacter();
+  tutorial.changeTutorialText();
+  tutorial.moveCharacter();
 }
-public void showMenu() 
-{  
-  background(255, 204, 0);
-  fill(0);
-  textSize(32);
-  text(" Your football program ", 150, 100, 3);
-  textSize(14);
-  text("Press 1 See chart football ", 100, 200);
-  text("Press 2 See football statistics ", 100, 220);
-  text("Press x to quit ", 100, 260);
-} 

@@ -13,6 +13,7 @@ public class Obstacle {
     obstacleSpeed = tempObstacleSpeed;
     rockAnimation = new Animation("gif/obstacles/rock/rock", 45);
     dolphinAnimation = new Animation("gif/obstacles/dolphin/dolphin_", 98);
+    
   }
   
   public void moveObstacle() {
@@ -23,6 +24,7 @@ public class Obstacle {
       obstaclePositionx = width+12;
       int n = (int)random(1, 3);
       float randomLane;
+      
       switch(n)
       {
         case 1:
