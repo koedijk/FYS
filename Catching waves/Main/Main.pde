@@ -3,9 +3,11 @@ Rythmic_Spawning miniGame;
 Character character;
 ObstacleController obstacleController;
 GameOverScreen gameOverScreen;
+TutorialText tutorialText;
 ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 boolean gameOver = false;
 MainMenu menu;
+Tutorial tutorial = new Tutorial();
 Score score;
 PFont font; 
 Button button;
@@ -20,21 +22,12 @@ final float characterSpriteHeight = 100;
 final float characterSpriteWidth = 100;
 
 void setup() {
-  score = new Score();
   menu = new MainMenu();
   button = new Button();
   size(800, 600);
   menu.Setup();
-  score.Start();
   frameRate(60);
-  waves = new Waves();
-  character = new Character();
-  miniGame = new Rythmic_Spawning();
-  obstacleController = new ObstacleController();
-  gameOverScreen = new GameOverScreen();
-  //obstacle[0] = new Obstacle(24, lane1, 9);
-  waves.waveSetup();
-  character.setupCharacter();
+  tutorial.tutorialSetup();
 }
 
 
@@ -46,28 +39,10 @@ void draw() {
     menu.Draw();
     return;
   }
-  background(73, 149, 255);
-  
-  //obstacles
-  obstacleController.controlObstacles();
-  
-  waves.drawWaves();
-  character.drawCharacter();
-  miniGame.StartMinigame();
-  score.Update();
-  //minigame start
-  if(keyCode == 77)
-  {
-    miniGame.gamePlaying = true;
-  }
-  
-  if (gameOver) {
     score.endGame = true;
-    gameOverScreen.drawScreen();
-  }
 }
 
 void keyPressed(){
-  character.moveCharacter();
+  tutorial.changeTutorialText();
   button.SelectButton();  
 }
