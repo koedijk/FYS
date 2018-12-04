@@ -8,8 +8,9 @@ public class Rythmic_Spawning{
   PImage target;
   
   public boolean gameStart = true;
-  private boolean gamePlaying = true;
+  public boolean gamePlaying = true;
   private boolean canPress = false;
+  public boolean miniGameLost = false;
   
   private int keyNumber = 0;
   public int maxObjects = 6;
@@ -34,6 +35,7 @@ public class Rythmic_Spawning{
       if(gameStart){
         SetupRythm();
         gameStart = false;
+        miniGameLost = false;
       }
       
       SpawnObjects();
@@ -87,6 +89,7 @@ public class Rythmic_Spawning{
     for(int i = 0; i < 6; i++){
       Objects[i].x = -100;
     }
+    miniGameLost = true;
     gameStart = true;
   }
   

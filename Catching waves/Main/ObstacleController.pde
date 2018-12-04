@@ -2,7 +2,7 @@ public class ObstacleController {
   int obstacleTimer = 0;
   int obstacleSpawnTime = 100;
   float randomLane = 0;
-  int counter = 0;
+  int counter;
   int  n = 1;
   public int controlObstacles() {
     
@@ -29,7 +29,11 @@ public class ObstacleController {
     //obstacles loop
     for (Obstacle obst : obstacles) {  //run scripts for all the obstacles
       if (!gameOver) {
-        obst.moveObstacle();
+        counter = obst.moveObstacle(counter);
+      }
+      else
+      {
+        counter = 0;
       }
       obst.drawObstacle();
     }

@@ -5,6 +5,7 @@ public class Obstacle {
   float obstacleMinSpeed;
   float obstaclePositionx;
   float obstaclePositiony;
+  int counter;
   Animation rockAnimation;
   Animation dolphinAnimation;
   Obstacle (float tempObstaclePositionx, float tempObstaclePositiony, int tempObstacleSpeed) {
@@ -15,14 +16,14 @@ public class Obstacle {
     dolphinAnimation = new Animation("gif/obstacles/dolphin/dolphin_", 98);
     
   }
-  
-  public void moveObstacle() {
+  public int moveObstacle(int counter) {
     obstaclePositionx -= obstacleSpeed;
     
     //reset x position if off screen
     if (obstaclePositionx <= -12) {
+      counter++;
       obstaclePositionx = width+12;
-      int n = (int)random(1, 3);
+      int n = (int)random(1, 4);
       float randomLane;
       
       switch(n)
@@ -52,6 +53,7 @@ public class Obstacle {
       print("LOL u DED ");
       gameOver = true;
     }
+    return(counter);
   }
   
   public void drawObstacle() {

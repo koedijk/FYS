@@ -5,9 +5,13 @@ class Tutorial
   final String MOVE_TEXT_UP = "Press z to go up";
   final String MOVE_TEXT_DOWN = "Press x to go down";
   final String COMPLIMENT_MOVING = "Good job now try to dodge the obsctacles";
+  final String OBSTACLE_FAIL = "Damn, try to dodge the obstacles this time";
   final String TUTORIAL_TEXT_MINIGAME = "Nice! now try out the minigame";
+  final String MINIGAME_FAIL = "You scrub, try to do your best this time";
+  final String TUTORIAL_SUCCES = "Nice you made it through the tutorial now play the full game!!!";
+
   
-  int obstacleCounter = 0;
+  int obstacleCounter;
   
   String text = WELCOME_TEXT;
   void tutorialSetup()
@@ -38,16 +42,44 @@ class Tutorial
       character.drawCharacter();
       tutorialText.drawScreen(text, width/2, height/3);
     }
-    else if(text == COMPLIMENT_MOVING)
+    else if(text == COMPLIMENT_MOVING || text == OBSTACLE_FAIL)
     {
-      waves.drawWaves();
-      character.drawCharacter();
       tutorialText.drawScreen(text, width/2, height/3);
-      obstacleCounter = obstacleController.controlObstacles();
-      if(obstacleCounter == 10)
+      if(gameOver)
+      {
+        text = OBSTACLE_FAIL;
+      }
+      else
+      {
+        waves.drawWaves();
+        character.drawCharacter();
+        obstacleCounter = obstacleController.controlObstacles();
+      }
+      if(obstacleCounter >= 10)
       {
         text = TUTORIAL_TEXT_MINIGAME;
       }
+    }
+    else if(text == TUTORIAL_TEXT_MINIGAME || text == MINIGAME_FAIL)
+    {
+      tutorialText.drawScreen(text, width/2, height/2);
+      
+      if(miniGame.miniGameLost)
+      {
+        text = MINIGAME_FAIL;
+      }
+      if(text != MINIGAME_FAIL)
+      {
+        miniGame.StartMinigame();
+      }
+      if(miniGame.miniGameLost == false && miniGame.gamePlaying == false)
+      {
+        text = TUTORIAL_SUCCES;
+      }
+    }
+    else if(text == TUTORIAL_SUCCES)
+    {
+      tutorialText.drawScreen(text, width/2, height/2);
     }
     //obstacles
     /*obstacleController.controlObstacles();
@@ -100,6 +132,26 @@ class Tutorial
           character.moveCharacterDown();
           text = COMPLIMENT_MOVING;
         }
+      }
+      else if(text == COMPLIMENT_MOVING)
+      {
+        character.moveCharacter();
+      }
+      else if(text == OBSTACLE_FAIL)
+      {
+        text = COMPLIMENT_MOVING;
+        gameOver = false;
+      }
+      else if(text == MINIGAME_FAIL)
+      {
+        text = TUTORIAL_TEXT_MINIGAME;
+        miniGame.miniGameLost = false;
+        miniGame.gamePlaying = true;
+      }
+      else if(text == TUTORIAL_SUCCES)
+      {
+        button.tutorialActive = false;
+        return;
       }
   }
 }

@@ -18,13 +18,6 @@ class Game
   
   void drawGame()
   {
-    if(menu.menuActive)
-    {
-      button.Draw();
-      menu.Draw();
-      return;
-    }
-    
     background(73, 149, 255);
   
     //obstacles

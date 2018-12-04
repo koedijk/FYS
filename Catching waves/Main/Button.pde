@@ -6,7 +6,8 @@ class Button
   ArrayList<ButtonData> buttonList = new ArrayList<ButtonData>(); 
   int index = 0;
   Tutorial tutorial;
-  boolean tutorialActive = false;
+  public boolean tutorialActive = false;
+  boolean gameActive = false;
     
   void Setup() 
   {
@@ -21,10 +22,12 @@ class Button
   
   void Draw()
   {
-    if(!tutorialActive)
-    {
-      HighlightButton(); 
-    }
+    if(tutorialActive)
+    tutorial.drawGame();
+    else if(gameActive)
+    game.drawGame();
+    else
+    HighlightButton();
   }
   
 
@@ -82,7 +85,7 @@ class Button
     textSize(14);
     text("Start Game",buttonList.get(0).data.get(0), buttonList.get(0).data.get(1));
     
-    fill(10);
+    fill(10); 
     textAlign(CENTER,CENTER);
     textSize(14);
     text("Tutorial",buttonList.get(1).data.get(0), buttonList.get(1).data.get(1));
@@ -96,8 +99,10 @@ class Button
   void SelectButton()
   {
     if(tutorialActive)
-      return;
-      
+      tutorial.changeTutorialText();
+    else if(gameActive)
+      game.moveCharacter();
+    else
     if(keyCode == 38 && index <= buttonList.size() && index > 0)
     { 
       index--;
@@ -106,8 +111,7 @@ class Button
     {
       index = buttonList.size() - 1;
     }
-    
-    else if(keyCode == 40 && index < buttonList.size() - 1 && index > 0 || index == 0)
+    else if(keyCode == 40 && index < buttonList.size() - 1 && index >= 0)
     { 
       index++;
     }
@@ -118,18 +122,19 @@ class Button
     print(index);
     if(key == 32 && index == 0)
     {
-      menu.menuActive = false;
+      gameActive = true;
+      print("game");
     }
     else if(key == 32 && index == 1)
     {
       tutorialActive = true;
-      tutorial.drawGame();
+      print("tutorial");
     }
     else if(key == 32 && index == 2)
     {
+       print("exit");
        exit();
     }
-    
   }
   
   

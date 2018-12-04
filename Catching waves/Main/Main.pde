@@ -7,7 +7,7 @@ ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 boolean gameOver = false;
 MainMenu menu;
 GameOverScreen gameOverScreen;
-Tutorial tutorial = new Tutorial();
+Tutorial tutorial;
 Score score;
 PFont font; 
 Button button;
@@ -26,6 +26,7 @@ void setup() {
   game = new Game();
   menu = new MainMenu();
   button = new Button();
+  tutorial = new Tutorial();
   size(800, 600);
   menu.Setup();
   frameRate(60);
@@ -35,10 +36,10 @@ void setup() {
 
 void draw()
 {
-   game.drawGame();
+  button.Draw();
+  menu.Draw();
 }
 
 void keyPressed(){
-  tutorial.changeTutorialText();
   button.SelectButton();  
 }
