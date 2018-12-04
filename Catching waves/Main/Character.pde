@@ -2,8 +2,6 @@ Animation characterAnimation;
 
 public class Character
 {
-  final char up = 'z';
-  final char down = 'x';
   final float lane1 = height / 2 + 30;
   final float lane2 = height / 2 + 130;
   final float lane3 = height / 2 + 230;
@@ -20,8 +18,8 @@ public class Character
   
   public void moveCharacter()
   {
-    if (!gameOver) {
-      if (key == up) {
+    if (!gameOver & !rythmGame) {
+      if (keyCode == 38) {
         if(characterPositiony == lane3)
         {
           characterPositiony = lane2;
@@ -31,7 +29,7 @@ public class Character
           characterPositiony = lane1;
         }
       } 
-      else if (key == down) {
+      else if (keyCode == 40) {
         if(characterPositiony == lane1)
         {
           characterPositiony = lane2;

@@ -6,9 +6,8 @@ public class ObstacleController {
   int  n = 1;
   public int controlObstacles() {
     
-    obstacleTimer++;
     if (obstacleTimer >= obstacleSpawnTime) {
-      
+      obstacleTimer = 0; //reset timer
       n = (int)random(1, 3);
       switch(n)
       {
@@ -22,16 +21,19 @@ public class ObstacleController {
           randomLane = character.lane3;
           break;
       }
-      obstacles.add(new Obstacle(24, randomLane, 4));  //spawn object
-      obstacleSpawnTime *= 1.5;    //reset timer
-      obstacleSpawnTime += 450;
+      obstacles.add(new Obstacle(24, randomLane, 4));  //spawn object   
     }
+    
+    obstacleTimer += 1;
     //obstacles loop
-    for (Obstacle obst : obstacles) {  //run scripts for all the obstacles
+    
+    
+    for (int i = 0; i < obstacles.size(); i++) {  //run scripts for all the obstacles
+      Obstacle obst = obstacles.get(i);
       if (!gameOver) {
-        counter = obst.moveObstacle(counter);
+         obst.moveObstacle(i);
       }
-      else
+      else 
       {
         counter = 0;
       }

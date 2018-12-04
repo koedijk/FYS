@@ -1,5 +1,5 @@
 public class Obstacle {
-  int state = 0;
+  int state = (int)random(0, 2);
   float obstacleSpeed;
   float obstacleMaxSpeed;
   float obstacleMinSpeed;
@@ -19,38 +19,14 @@ public class Obstacle {
   public int moveObstacle(int counter) {
     obstaclePositionx -= obstacleSpeed;
     
-    //reset x position if off screen
-    if (obstaclePositionx <= -12) {
-      counter++;
-      obstaclePositionx = width+12;
-      int n = (int)random(1, 4);
-      float randomLane;
-      
-      switch(n)
-      {
-        case 1:
-          randomLane = character.lane1;
-          break;
-        case 2:
-          randomLane = character.lane2;
-          break;
-        default:
-          randomLane = character.lane3;
-          break;
-      }
-      obstaclePositiony = randomLane;
-      state = round(random(1));
-      if (state == 0) {
-        obstacleSpeed = 4;
-      } else {
-        obstacleSpeed = 6;
-      }
-    }
+   if(obstaclePositionx <= -12) {
+        obstacles.remove(counter);
+   }
     
     //collide with player
     if ((obstaclePositionx-characterSpriteWidth/2 < character.characterPositionx+obstacleSpeed && obstaclePositionx-characterSpriteWidth/2 > character.characterPositionx) && 
         obstaclePositiony == character.characterPositiony) {
-      print("LOL u DED ");
+      print("RIP");
       gameOver = true;
     }
     return(counter);

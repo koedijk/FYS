@@ -25,7 +25,7 @@ class Game
     
     waves.drawWaves();
     character.drawCharacter();
-    miniGame.StartMinigame();
+    //miniGame.StartMinigame();
     score.Update();
     //minigame start
     if(keyCode == 77)

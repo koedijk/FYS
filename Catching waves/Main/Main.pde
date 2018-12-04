@@ -5,6 +5,7 @@ ObstacleController obstacleController;
 TutorialText tutorialText;
 ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 boolean gameOver = false;
+boolean rythmGame = false;
 MainMenu menu;
 GameOverScreen gameOverScreen;
 Tutorial tutorial;
