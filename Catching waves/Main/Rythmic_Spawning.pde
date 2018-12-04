@@ -31,7 +31,6 @@ public class Rythmic_Spawning{
     
   //Is being called from the main scene and runs the minigame
   public void StartMinigame(){  
-    if(gamePlaying){
       if(gameStart){
         SetupRythm();
         gameStart = false;
@@ -45,7 +44,6 @@ public class Rythmic_Spawning{
       {
         keyNumber = keyCode;
       }else{keyNumber = 0;}
-    }
   }
   
   //Spawns the objects and keeps them moving with the given speed
@@ -85,17 +83,19 @@ public class Rythmic_Spawning{
   
   void miniGameOver(){
     gamePlaying = false;
+    gameStart = true;
     print("Game Over ");
     for(int i = 0; i < 6; i++){
       Objects[i].x = -100;
     }
     miniGameLost = true;
-    gameStart = true;
+    rythmGame = false;
   }
   
   void miniGameWon(){
     gamePlaying = false;
-    print("YOU DID IT");
     gameStart = true;
+    print("YOU DID IT");
+    rythmGame = false;
   }
 }

@@ -5,39 +5,40 @@ public class ObstacleController {
   int counter;
   int  n = 1;
   public int controlObstacles() {
-    
-    if (obstacleTimer >= obstacleSpawnTime) {
-      obstacleTimer = 0; //reset timer
-      n = (int)random(1, 3);
-      switch(n)
-      {
-        case 1:
-          randomLane = character.lane1;
-          break;
-        case 2:
-          randomLane = character.lane2;
-          break;
-        default:
-          randomLane = character.lane3;
-          break;
+    if(!rythmGame){
+      if (obstacleTimer >= obstacleSpawnTime) {
+        obstacleTimer = 0; //reset timer
+        n = (int)random(1, 3);
+        switch(n)
+        {
+          case 1:
+            randomLane = character.lane1;
+            break;
+          case 2:
+            randomLane = character.lane2;
+            break;
+          default:
+            randomLane = character.lane3;
+            break;
+        }
+        obstacles.add(new Obstacle(24, randomLane, 4));  //spawn object   
       }
-      obstacles.add(new Obstacle(24, randomLane, 4));  //spawn object   
-    }
-    
-    obstacleTimer += 1;
-    //obstacles loop
-    
-    
-    for (int i = 0; i < obstacles.size(); i++) {  //run scripts for all the obstacles
-      Obstacle obst = obstacles.get(i);
-      if (!gameOver) {
-         obst.moveObstacle(i);
+      
+      obstacleTimer += 1;
+      //obstacles loop
+      
+      //First looks how many objects are in the array and then assigns the objects to their number. running the movement and draw code from those objects.
+      for (int i = 0; i < obstacles.size(); i++) {  
+        Obstacle obst = obstacles.get(i);
+        if (!gameOver) {
+           obst.moveObstacle(i);
+        }
+        else 
+        {
+          counter = 0;
+        }
+        obst.drawObstacle();
       }
-      else 
-      {
-        counter = 0;
-      }
-      obst.drawObstacle();
     }
     return counter;
   }

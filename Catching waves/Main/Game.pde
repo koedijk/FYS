@@ -25,13 +25,12 @@ class Game
     
     waves.drawWaves();
     character.drawCharacter();
-    //miniGame.StartMinigame();
-    score.Update();
-    //minigame start
-    if(keyCode == 77)
-    {
-      miniGame.gamePlaying = true;
+    
+    //starts minigame
+    if(rythmGame){
+    miniGame.StartMinigame();
     }
+    score.Update();
     
     if (gameOver) {
       gameOverScreen.drawScreen();
