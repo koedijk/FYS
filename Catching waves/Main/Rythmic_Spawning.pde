@@ -14,7 +14,7 @@ public class Rythmic_Spawning{
   
   private int keyNumber = 0;
   public int maxObjects = 6;
-  public int speed = 2;
+  public int speed = 7;
   int targerLocationX = 100;
   
   public Rythmic_Objects[] Objects = new Rythmic_Objects[maxObjects];
@@ -61,7 +61,7 @@ public class Rythmic_Spawning{
   void CheckCollision(){   
     for(int i = 0; i < maxObjects; i++)
     {
-      if(Objects[i].x < target.width + targerLocationX && Objects[i].x > target.width + targerLocationX - target.width)
+      if(Objects[i].x < target.width + targerLocationX && Objects[i].x > targerLocationX - target.width)
       {
         canPress = true;
         if(keyNumber == Objects[i].correctInput){
