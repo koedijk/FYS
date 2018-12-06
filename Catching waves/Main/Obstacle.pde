@@ -15,9 +15,9 @@ public class Obstacle {
     obstaclePositionx = tempObstaclePositionx+width;
     obstaclePositiony = tempObstaclePositiony;
     obstacleSpeed = tempObstacleSpeed;
-    rockAnimation = new Animation("gif/obstacles/rock/rock", 45);
-    dolphinAnimation = new Animation("gif/obstacles/rock/rock", 45);
-    waveAnimation = new Animation("gif/obstacles/dolphin/dolphin_", 98);
+    rockAnimation = new Animation("animation/obstacles/rock.png", 5, 2);
+    dolphinAnimation = new Animation("animation/obstacles/rock.png", 5, 2);
+    waveAnimation = new Animation("animation/obstacles/dolphin.png", 7, 2);
     
   }
   public int moveObstacle(int counter) {
@@ -44,12 +44,12 @@ public class Obstacle {
   public void drawObstacle() {
     if(random > 5){
     if (state == 0) {
-      rockAnimation.display(obstaclePositionx, obstaclePositiony-50);
+      rockAnimation.DrawAnimation(false, 10, obstaclePositionx, obstaclePositiony-50);
     } else {
-      dolphinAnimation.display(obstaclePositionx, obstaclePositiony-100);
+      dolphinAnimation.DrawAnimation(false, 10, obstaclePositionx, obstaclePositiony-100);
     }
     }else if(random <= 5){
-      waveAnimation.display(obstaclePositionx, obstaclePositiony-100);
+      waveAnimation.DrawAnimation(true, 10, obstaclePositionx, obstaclePositiony-100);
       specialObject = true;
       print("Special Tile");
     }

@@ -14,6 +14,8 @@ PFont font;
 Button button;
 Game game;
 
+Animation animation;
+
 //constants
 final char up = 'z';
 final char down = 'x';
@@ -33,6 +35,7 @@ void setup() {
   frameRate(60);
   game.gameSetup();
   tutorial.tutorialSetup();
+  
 }
 
 void draw()

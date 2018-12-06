@@ -13,7 +13,7 @@ public class Character
   
   public void setupCharacter()
   {
-    characterAnimation = new Animation("gif/surfer/surfer", 9);
+    characterAnimation = new Animation("animation/surfer/surfer.png", 1, 2);
   }
   
   public void moveCharacter()
@@ -65,6 +65,6 @@ public class Character
   }
   
   public void drawCharacter(){
-    characterAnimation.display(characterPositionx, characterPositiony-characterLane);
+    characterAnimation.DrawAnimation(true, 10, characterPositionx, characterPositiony-characterLane);
   }
 }
