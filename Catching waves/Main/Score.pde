@@ -2,7 +2,7 @@ class Score {
   
   int currentScore = 0;
   int gainScore = 1;
-  float multiplier = 1;
+  int multiplier = 1;
   int highScore = 0;
   String lines[];
   boolean endGame = false;
@@ -37,10 +37,11 @@ class Score {
          lines = split(newHighScore,' ');
          saveStrings("HighScore.txt",lines);
       }
+      text(multiplier,720,120);
     }    
  }
   
-  public void SetMultiplier(float i)
+  public void SetMultiplier(int i)
   {
     multiplier = i;
   }
@@ -51,5 +52,7 @@ class Score {
     text("Score:",720, 20);
     textSize(14);
     text("HighScore:",720,60);
+    textSize(14);
+    text("Combo:",720,100);
   }
 }
