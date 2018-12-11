@@ -5,7 +5,7 @@ public class Character
   final float lane1 = height / 2 + 30;
   final float lane2 = height / 2 + 130;
   final float lane3 = height / 2 + 230;
-  final float characterLane = 50;
+  final float characterLane = 2;
   
   float frameCounter = 0;
   float characterPositionx = 100;

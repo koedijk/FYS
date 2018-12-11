@@ -95,7 +95,6 @@ public class Rythmic_Spawning{
   void miniGameWon(){
     gamePlaying = false;
     gameStart = true;
-    print("YOU DID IT");
     rythmGame = false;
   }
 }
