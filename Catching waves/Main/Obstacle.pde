@@ -14,7 +14,7 @@ public class Obstacle {
   Obstacle (float tempObstaclePositionx, float tempObstaclePositiony, int tempObstacleSpeed) {
     obstaclePositionx = tempObstaclePositionx+width;
     obstaclePositiony = tempObstaclePositiony;
-    obstacleSpeed = tempObstacleSpeed;
+    obstacleSpeed = tempObstacleSpeed+int(score.currentScore/5000);
     rockAnimation = new Animation("animation/obstacles/rock.png", 5, 2);
     dolphinAnimation = new Animation("animation/obstacles/dolphin.png", 7, 2);
     waveAnimation = new Animation("animation/obstacles/waves.png", 2, 2);
@@ -32,8 +32,9 @@ public class Obstacle {
         obstaclePositiony == character.characterPositiony) {
       print("RIP");
       if(specialObject) {
-        if (obstaclePositionx-characterSpriteWidth/2 > character.characterPositionx) {
+        if (obstaclePositionx-characterSpriteWidth/2 > character.characterPositionx-obstacleSpeed/2) {
           rythmGame = true;
+          obstacles.remove(counter);
         }
       }else{
       gameOver = true;

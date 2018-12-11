@@ -2,6 +2,7 @@ public class ObstacleController {
   int obstacleTimer = 0;
   int obstacleSpawnTime = 100;
   float randomLane = 0;
+  float randomLane2 = 0;
   int counter;
   int  n = 1;
   public int controlObstacles() {
@@ -21,7 +22,26 @@ public class ObstacleController {
             randomLane = character.lane3;
             break;
         }
-        obstacles.add(new Obstacle(24, randomLane, 4));  //spawn object   
+        obstacles.add(new Obstacle(24, randomLane, 4));  //spawn object
+        
+        if (score.multiplier >= 8) {
+          n = (int)random(1, 4);
+          switch(n)
+          {
+            case 1:
+                randomLane2 = character.lane1;
+                break;
+              case 2:
+                randomLane2 = character.lane2;
+                break;
+              default:
+                randomLane2 = character.lane3;
+                break;
+          }
+          if (randomLane2 != randomLane) {
+            obstacles.add(new Obstacle(24, randomLane2, 4));  //spawn object
+          }
+        }
       }
       
       obstacleTimer += 1;
