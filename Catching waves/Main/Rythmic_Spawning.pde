@@ -52,16 +52,16 @@ public class Rythmic_Spawning{
         
         switch(keyCode){
           case(37):
-          image(target_pressed_left, targerLocationX, 0);
+          image(target_pressed_left, targerLocationX, 32);
           break;
           case(39):
-          image(target_pressed_right, targerLocationX, 0);
+          image(target_pressed_right, targerLocationX, 32);
           break;
           case(38):
-          image(target_pressed_up, targerLocationX, 0);
+          image(target_pressed_up, targerLocationX, 32);
           break;
           case(40):
-          image(target_pressed_down, targerLocationX, 0);
+          image(target_pressed_down, targerLocationX, 32);
           break;
         }
         
@@ -71,7 +71,7 @@ public class Rythmic_Spawning{
       } else {
         keyNumber = 0;
         
-      image(target, targerLocationX, 0);
+      image(target, targerLocationX, 32);
       }
       
       SpawnObjects();
@@ -81,7 +81,7 @@ public class Rythmic_Spawning{
   //Spawns the objects and keeps them moving with the given speed
   private void SpawnObjects() {
     for(int i = 0; i < maxObjects; i++){
-      Objects[i].x = Objects[i].x-speed;
+      Objects[i].x = Objects[i].x-(speed+max(1, int(min(score.multiplier/2, 6))));
       Objects[i].SpawnImage();
     }
   }
@@ -95,11 +95,12 @@ public class Rythmic_Spawning{
         canPress = true;
         if(keyNumber == Objects[i].correctInput){
           Objects[i].y = -100;
+          Objects[i].x = -100;
         }else if(keyNumber != Objects[i].correctInput && keyNumber != 0){
-          miniGameOver();
+          //miniGameOver();
         }
       }
-      if(Objects[i].x < target.width - target.width && Objects[i].y == 0){
+      if(Objects[i].x < 0 && Objects[i].y != -100){
           miniGameOver();
       }
       
@@ -127,6 +128,6 @@ public class Rythmic_Spawning{
     gamePlaying = false;
     gameStart = true;
     rythmGame = false;
-    score.SetMultiplier(score.multiplier*2);  //double the combo
+    score.SetMultiplier(min(score.multiplier*2, score.multiplier+4));  //add to the combo
   }
 }

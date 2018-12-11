@@ -10,7 +10,7 @@ MainMenu menu;
 GameOverScreen gameOverScreen;
 Tutorial tutorial;
 Score score;
-PFont font; 
+PFont font;
 Button button;
 Game game;
 

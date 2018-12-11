@@ -5,13 +5,13 @@ class Button
   color currentColor;
   ArrayList<ButtonData> buttonList = new ArrayList<ButtonData>(); 
   int index = 0;
-  Tutorial tutorial;
+  //Tutorial tutorial;
   public boolean tutorialActive = false;
   boolean gameActive = false;
     
   void Setup() 
   {
-    tutorial = new Tutorial();
+    //tutorial = new Tutorial();
     rectColor = color(100);
     rectHighlight = color(255);
     buttonList.add(new ButtonData(400,200,150,50));
@@ -22,9 +22,10 @@ class Button
   
   void Draw()
   {
-    if(tutorialActive)
-    tutorial.drawGame();
-    else if(gameActive)
+    //if(tutorialActive)
+    //tutorial.drawGame();
+    //else 
+    if(gameActive)
     game.drawGame();
     else
     HighlightButton();
@@ -88,7 +89,7 @@ class Button
     fill(10); 
     textAlign(CENTER,CENTER);
     textSize(14);
-    text("Tutorial",buttonList.get(1).data.get(0), buttonList.get(1).data.get(1));
+    text("  ",buttonList.get(1).data.get(0), buttonList.get(1).data.get(1));
     
     fill(10);
     textAlign(CENTER,CENTER);
@@ -98,9 +99,10 @@ class Button
   
   void SelectButton()
   {
-    if(tutorialActive)
-      tutorial.changeTutorialText();
-    else if(gameActive)
+    //if(tutorialActive)
+      //tutorial.changeTutorialText();
+    //else 
+    if(gameActive)
       game.moveCharacter();
     else
     if(keyCode == 38 && index <= buttonList.size() && index > 0)
@@ -127,8 +129,8 @@ class Button
     }
     else if(key == 32 && index == 1)
     {
-      tutorialActive = true;
-      print("tutorial");
+      //tutorialActive = true;
+      //print("tutorial");
     }
     else if(key == 32 && index == 2)
     {

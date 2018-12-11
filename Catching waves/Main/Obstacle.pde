@@ -7,6 +7,7 @@ public class Obstacle {
   float obstaclePositionx;
   float obstaclePositiony;
   int counter;
+  int i;
   boolean specialObject = false;
   Animation rockAnimation;
   Animation dolphinAnimation;
@@ -14,7 +15,7 @@ public class Obstacle {
   Obstacle (float tempObstaclePositionx, float tempObstaclePositiony, int tempObstacleSpeed) {
     obstaclePositionx = tempObstaclePositionx+width;
     obstaclePositiony = tempObstaclePositiony;
-    obstacleSpeed = tempObstacleSpeed;
+    obstacleSpeed = tempObstacleSpeed+int(score.currentScore/5000);
     rockAnimation = new Animation("animation/obstacles/rock.png", 5, 2);
     dolphinAnimation = new Animation("animation/obstacles/dolphin.png", 7, 2);
     waveAnimation = new Animation("animation/obstacles/waves.png", 2, 2);
@@ -32,8 +33,9 @@ public class Obstacle {
         obstaclePositiony == character.characterPositiony) {
       print("RIP");
       if(specialObject) {
-        if (obstaclePositionx-characterSpriteWidth/2 > character.characterPositionx) {
+        if (obstaclePositionx-characterSpriteWidth/2 > character.characterPositionx-obstacleSpeed/2) {
           rythmGame = true;
+          obstacles.remove(counter);
         }
       }else{
       gameOver = true;
@@ -44,13 +46,18 @@ public class Obstacle {
   }
   
   public void drawObstacle() {
-    if(random > 5){
+    if (score.multiplier >= 8) {
+      i = 1;
+    } else {
+      i = 3;
+    }
+    if(random > i){
     if (state == 0) {
       rockAnimation.DrawAnimation(false, 10, obstaclePositionx, obstaclePositiony-10);
     } else {
       dolphinAnimation.DrawAnimation(true, 5, obstaclePositionx, obstaclePositiony-10);
     }
-    }else if(random <= 5){
+    } else if(random <= i){
       waveAnimation.DrawAnimation(false, 18, obstaclePositionx, obstaclePositiony-10);
       specialObject = true;
     }
