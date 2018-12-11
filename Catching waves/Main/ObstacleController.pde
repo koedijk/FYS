@@ -8,7 +8,7 @@ public class ObstacleController {
     if(!rythmGame){
       if (obstacleTimer >= obstacleSpawnTime) {
         obstacleTimer = 0; //reset timer
-        n = (int)random(1, 3);
+        n = (int)random(1, 4);
         switch(n)
         {
           case 1:
