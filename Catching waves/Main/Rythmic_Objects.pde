@@ -1,6 +1,7 @@
 public class Rythmic_Objects{
     PImage image;
-    int x = 1000,y;
+    int x = 1000;
+    int y = 32;
     int hor = 64,ver = 64;
     int correctInput;
     

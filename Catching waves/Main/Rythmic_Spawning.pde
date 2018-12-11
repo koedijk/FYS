@@ -52,16 +52,16 @@ public class Rythmic_Spawning{
         
         switch(keyCode){
           case(37):
-          image(target_pressed_left, targerLocationX, 0);
+          image(target_pressed_left, targerLocationX, 32);
           break;
           case(39):
-          image(target_pressed_right, targerLocationX, 0);
+          image(target_pressed_right, targerLocationX, 32);
           break;
           case(38):
-          image(target_pressed_up, targerLocationX, 0);
+          image(target_pressed_up, targerLocationX, 32);
           break;
           case(40):
-          image(target_pressed_down, targerLocationX, 0);
+          image(target_pressed_down, targerLocationX, 32);
           break;
         }
         
@@ -71,7 +71,7 @@ public class Rythmic_Spawning{
       } else {
         keyNumber = 0;
         
-      image(target, targerLocationX, 0);
+      image(target, targerLocationX, 32);
       }
       
       SpawnObjects();
