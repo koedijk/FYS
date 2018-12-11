@@ -6,6 +6,10 @@ Rythmic_Objects Objects;
 //START OF THE CLASS
 public class Rythmic_Spawning{
   PImage target;
+  PImage target_pressed_left;
+  PImage target_pressed_right;
+  PImage target_pressed_up;
+  PImage target_pressed_down;
   
   public boolean gameStart = true;
   public boolean gamePlaying = true;
@@ -37,20 +41,45 @@ public class Rythmic_Spawning{
         miniGameLost = false;
       }
       
+      target = loadImage("Images/Target.png");
+      target_pressed_left = loadImage("Images/Target_pressed_left.png");
+      target_pressed_right = loadImage("Images/Target_pressed_right.png");
+      target_pressed_up = loadImage("Images/Target_pressed_up.png");
+      target_pressed_down = loadImage("Images/Target_pressed_down.png");
+      
+      if(keyPressed == true)
+      {
+        
+        switch(keyCode){
+          case(37):
+          image(target_pressed_left, targerLocationX, 0);
+          break;
+          case(39):
+          image(target_pressed_right, targerLocationX, 0);
+          break;
+          case(38):
+          image(target_pressed_up, targerLocationX, 0);
+          break;
+          case(40):
+          image(target_pressed_down, targerLocationX, 0);
+          break;
+        }
+        
+        if (canPress == true) {
+          keyNumber = keyCode;
+        }
+      } else {
+        keyNumber = 0;
+        
+      image(target, targerLocationX, 0);
+      }
+      
       SpawnObjects();
       CheckCollision();
-      
-      if(keyPressed == true && canPress == true)
-      {
-        keyNumber = keyCode;
-      }else{keyNumber = 0;}
   }
   
   //Spawns the objects and keeps them moving with the given speed
-  private void SpawnObjects(){
-    target = loadImage("Images/Target.png");
-    image(target,targerLocationX,0);
-    
+  private void SpawnObjects() {
     for(int i = 0; i < maxObjects; i++){
       Objects[i].x = Objects[i].x-speed;
       Objects[i].SpawnImage();
@@ -58,10 +87,10 @@ public class Rythmic_Spawning{
   }
   
   // COLLISION CHECK PART
-  void CheckCollision(){   
+  void CheckCollision() {   
     for(int i = 0; i < maxObjects; i++)
     {
-      if(Objects[i].x < target.width/4 + targerLocationX && Objects[i].x > targerLocationX - target.width/2)
+      if(Objects[i].x < targerLocationX && Objects[i].x > targerLocationX - target.width/2)
       {
         canPress = true;
         if(keyNumber == Objects[i].correctInput){
@@ -79,6 +108,7 @@ public class Rythmic_Spawning{
         miniGameWon();
       }
     }
+    
   }
   
   void miniGameOver(){
@@ -90,11 +120,13 @@ public class Rythmic_Spawning{
     }
     miniGameLost = true;
     rythmGame = false;
+    score.SetMultiplier(1);  //reset combo
   }
   
   void miniGameWon(){
     gamePlaying = false;
     gameStart = true;
     rythmGame = false;
+    score.SetMultiplier(score.multiplier*2);  //double the combo
   }
 }

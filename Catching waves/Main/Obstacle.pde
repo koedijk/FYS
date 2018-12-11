@@ -28,11 +28,13 @@ public class Obstacle {
    }
     
     //collide with player
-    if ((obstaclePositionx-characterSpriteWidth/2 < character.characterPositionx+obstacleSpeed && obstaclePositionx-characterSpriteWidth/2 > character.characterPositionx) && 
+    if ((obstaclePositionx-characterSpriteWidth/2 < character.characterPositionx+obstacleSpeed && obstaclePositionx+characterSpriteWidth/2 > character.characterPositionx) && 
         obstaclePositiony == character.characterPositiony) {
       print("RIP");
-      if(specialObject){
-      rythmGame = true;
+      if(specialObject) {
+        if (obstaclePositionx-characterSpriteWidth/2 > character.characterPositionx) {
+          rythmGame = true;
+        }
       }else{
       gameOver = true;
       }
