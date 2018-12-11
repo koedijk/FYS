@@ -7,6 +7,12 @@ public class ObstacleController {
   int  n = 1;
   public int controlObstacles() {
     if(!rythmGame){
+      if (score.multiplier >= 12) {
+        obstacleSpawnTime = 70;
+      } else {
+        obstacleSpawnTime = 100;
+      }
+      
       if (obstacleTimer >= obstacleSpawnTime) {
         obstacleTimer = 0; //reset timer
         n = (int)random(1, 4);
