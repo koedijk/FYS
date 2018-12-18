@@ -6,7 +6,6 @@ public class ObstacleController {
   int counter;
   int  n = 1;
   public int controlObstacles() {
-    if(!rythmGame){
       if (score.multiplier >= 12) {
         obstacleSpawnTime = 70;
       } else {
@@ -65,7 +64,6 @@ public class ObstacleController {
         }
         obst.drawObstacle();
       }
-    }
     return counter;
   }
 }
