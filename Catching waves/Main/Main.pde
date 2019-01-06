@@ -13,6 +13,7 @@ Score score;
 PFont font;
 Button button;
 Game game;
+SampleBank samplebank;
 
 Animation animation;
 
@@ -26,6 +27,7 @@ final float characterSpriteHeight = 100;
 final float characterSpriteWidth = 100;
 
 void setup() {
+  samplebank = new SampleBank();
   game = new Game();
   menu = new MainMenu();
   button = new Button();
