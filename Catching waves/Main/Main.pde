@@ -12,7 +12,11 @@ Score score;
 PFont font;
 Button button;
 Game game;
+<<<<<<< HEAD
 MainMenu menu;
+=======
+SampleBank samplebank;
+>>>>>>> 3771be6b748929cbbcbe80b6575f8e58959fc3d7
 
 Animation animation;
 
@@ -26,6 +30,7 @@ final float characterSpriteHeight = 100;
 final float characterSpriteWidth = 100;
 
 void setup() {
+  samplebank = new SampleBank();
   game = new Game();
   menu = new MainMenu();
   button = new Button();
