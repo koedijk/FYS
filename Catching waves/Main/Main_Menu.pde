@@ -11,11 +11,6 @@ public class MainMenu {
     strokeWeight(4);
     fill(255);
     rect(width/2 - layer1 / 2,height/2 - layer1 / 2,layer1,layer1);
-    button.Setup();
-  }
-
-  void Draw()
-  {
-    
+    strokeWeight(2);
   }
 }

@@ -5,11 +5,9 @@ public class GameOverScreen {
   void drawScreen() {
     
     color c = color(0, 126, 255, 102);
-    fill(c);
-    rect(0, 0, width, height);
+
     float value = alpha(c);
-    fill(value);
-    
+    fill(value);    
     tint(255);
     textFont(fontLarge);
     textAlign(CENTER);

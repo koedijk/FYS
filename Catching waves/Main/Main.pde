@@ -6,13 +6,13 @@ TutorialText tutorialText;
 ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 boolean gameOver = false;
 boolean rythmGame = false;
-MainMenu menu;
 GameOverScreen gameOverScreen;
 Tutorial tutorial;
 Score score;
 PFont font;
 Button button;
 Game game;
+MainMenu menu;
 
 Animation animation;
 
@@ -34,14 +34,12 @@ void setup() {
   menu.Setup();
   frameRate(60);
   game.gameSetup();
-  tutorial.tutorialSetup();
-  
+  tutorial.tutorialSetup();  
 }
 
 void draw()
 {
   button.Draw();
-  menu.Draw();
 }
 
 void keyPressed(){

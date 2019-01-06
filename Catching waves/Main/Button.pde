@@ -1,40 +1,54 @@
 class Button
 {
-  color rectColor, baseColor;
+  color rectColor, baseColor, backgroundColor;
   color rectHighlight;
   color currentColor;
   ArrayList<ButtonData> buttonList = new ArrayList<ButtonData>(); 
   int index = 0;
+  int AmountMainMenuButtons = 3;
   //Tutorial tutorial;
   public boolean tutorialActive = false;
   boolean gameActive = false;
+  boolean gameMenu = true;
+  boolean settingsMenu = false;
+  int songNumber = 1;
+  String songString = "1 ";
     
   void Setup() 
   {
-    //tutorial = new Tutorial();
+    backgroundColor = color(65);
     rectColor = color(100);
-    rectHighlight = color(255);
+    rectHighlight = color(255);  
+    //Adding New Button to list and gives X,Y,Width,Heigth to set location via ButtonData Class.
+    //Start Button
     buttonList.add(new ButtonData(400,200,150,50));
+    //Settings Button
     buttonList.add(new ButtonData(400,300,150,50));
-    buttonList.add(new ButtonData(400,400,150,50));    
+    //Exit Button
+    buttonList.add(new ButtonData(400,400,150,50));
+    //Selected Song number 
+    buttonList.add(new ButtonData(400,250,150,50));
+    //Return Button in Settings
+    buttonList.add(new ButtonData(400,350,150,50));
     ShowButton();
   }
   
   void Draw()
   {
-    //if(tutorialActive)
-    //tutorial.drawGame();
-    //else 
     if(gameActive)
-    game.drawGame();
-    else
+    game.drawGame();  
+    else if(gameMenu)
     HighlightButton();
+    else if(settingsMenu){
+      Settings();    
+      HighlightButton();
+    }
   }
   
 
   void ShowButton()
   {
-    for(int i = 0; i < buttonList.size(); i++)
+    for(int i = 0; i < buttonList.size() - 2; i++)
     {
       stroke(0);
       strokeWeight(2);
@@ -51,92 +65,155 @@ class Button
     {
       case 0:
         fill(rectHighlight);
-        rect(buttonList.get(index).data.get(0),buttonList.get(index).data.get(1),buttonList.get(index).data.get(2),buttonList.get(index).data.get(3));
-        
+        rect(buttonList.get(index).data.get(0),buttonList.get(index).data.get(1),buttonList.get(index).data.get(2),buttonList.get(index).data.get(3));        
         fill(rectColor);
         rect(buttonList.get(1).data.get(0),buttonList.get(1).data.get(1),buttonList.get(1).data.get(2),buttonList.get(1).data.get(3));
-        fill(rectColor);
         rect(buttonList.get(2).data.get(0),buttonList.get(2).data.get(1),buttonList.get(2).data.get(2),buttonList.get(2).data.get(3));
         break;
       case 1:
         fill(rectHighlight);
-        rect(buttonList.get(index).data.get(0),buttonList.get(index).data.get(1),buttonList.get(index).data.get(2),buttonList.get(index).data.get(3));
-        
+        rect(buttonList.get(index).data.get(0),buttonList.get(index).data.get(1),buttonList.get(index).data.get(2),buttonList.get(index).data.get(3));        
         fill(rectColor);
         rect(buttonList.get(0).data.get(0),buttonList.get(0).data.get(1),buttonList.get(0).data.get(2),buttonList.get(0).data.get(3));
-        fill(rectColor);
         rect(buttonList.get(2).data.get(0),buttonList.get(2).data.get(1),buttonList.get(2).data.get(2),buttonList.get(2).data.get(3));
         break;
       case 2:
         fill(rectHighlight);
-        rect(buttonList.get(index).data.get(0),buttonList.get(index).data.get(1),buttonList.get(index).data.get(2),buttonList.get(index).data.get(3));
-        
+        rect(buttonList.get(index).data.get(0),buttonList.get(index).data.get(1),buttonList.get(index).data.get(2),buttonList.get(index).data.get(3));        
         fill(rectColor);
         rect(buttonList.get(0).data.get(0),buttonList.get(0).data.get(1),buttonList.get(0).data.get(2),buttonList.get(0).data.get(3));
-        fill(rectColor);
         rect(buttonList.get(1).data.get(0),buttonList.get(1).data.get(1),buttonList.get(1).data.get(2),buttonList.get(1).data.get(3));
         break;
+       case 3: 
+         fill(rectHighlight);
+         rect(buttonList.get(3).data.get(0),buttonList.get(3).data.get(1),buttonList.get(3).data.get(2),buttonList.get(3).data.get(3));
+         fill(rectColor);
+         rect(buttonList.get(4).data.get(0),buttonList.get(4).data.get(1),buttonList.get(4).data.get(2),buttonList.get(4).data.get(3));
+         break;
+      case 4:
+         fill(rectHighlight);
+         rect(buttonList.get(4).data.get(0),buttonList.get(4).data.get(1),buttonList.get(4).data.get(2),buttonList.get(4).data.get(3));
+         fill(rectColor);
+         rect(buttonList.get(3).data.get(0),buttonList.get(3).data.get(1),buttonList.get(3).data.get(2),buttonList.get(3).data.get(3));
+         break;      
       default:
-        ShowButton();
         break;
     }
-    
-    fill(10);
-    textAlign(CENTER,CENTER);
-    textSize(14);
-    text("Start Game",buttonList.get(0).data.get(0), buttonList.get(0).data.get(1));
-    
-    fill(10); 
-    textAlign(CENTER,CENTER);
-    textSize(14);
-    text("  ",buttonList.get(1).data.get(0), buttonList.get(1).data.get(1));
-    
-    fill(10);
-    textAlign(CENTER,CENTER);
-    textSize(14);
-    text("Exit",buttonList.get(2).data.get(0), buttonList.get(2).data.get(1));
+    if(gameMenu){
+      fill(10);
+      textAlign(CENTER,CENTER);
+      textSize(14);
+      text("Start Game",buttonList.get(0).data.get(0), buttonList.get(0).data.get(1));
+      
+      fill(10); 
+      textAlign(CENTER,CENTER);
+      textSize(14);
+      text("Settings",buttonList.get(1).data.get(0), buttonList.get(1).data.get(1));
+      
+      fill(10);
+      textAlign(CENTER,CENTER);
+      textSize(14);
+      text("Exit",buttonList.get(2).data.get(0), buttonList.get(2).data.get(1));
+    }
+    else if(settingsMenu)
+    {  
+      songString = str(songNumber);
+      fill(10);
+      textAlign(CENTER,CENTER);
+      textSize(14);
+      text("Number: " + songString,buttonList.get(3).data.get(0), buttonList.get(3).data.get(1));
+      text("Return",buttonList.get(4).data.get(0),buttonList.get(4).data.get(1));
+    }
   }
   
   void SelectButton()
   {
-    //if(tutorialActive)
-      //tutorial.changeTutorialText();
-    //else 
     if(gameActive)
       game.moveCharacter();
-    else
-    if(keyCode == 38 && index <= buttonList.size() && index > 0)
-    { 
-      index--;
+    else if(gameMenu)
+    {      
+      if(keyCode == 38 && index <= AmountMainMenuButtons && index > 0)
+      { 
+        index--;
+      }
+      else if(keyCode == 38 && index == 0)
+      {
+        index = AmountMainMenuButtons - 1;
+      }
+      else if(keyCode == 40 && index < AmountMainMenuButtons - 1 && index >= 0)
+      { 
+        index++;
+      }
+      else if(keyCode == 40 && index == AmountMainMenuButtons - 1)
+      {
+        index = 0;
+      }
+      if(key == 32 && index == 0)
+      {
+        //Start Button initialize
+        gameActive = true;
+        gameMenu = false;
+        settingsMenu = false;
+      }
+      else if(key == 32 && index == 1)
+      {
+        //Settings initialize
+        gameMenu = false;
+        settingsMenu = true;
+        index = 3;
+      }
+      else if(key == 32 && index == 2)
+      {
+         exit();
+      }
     }
-    else if(keyCode == 38 && index == 0)
+    else if(settingsMenu)
     {
-      index = buttonList.size() - 1;
-    }
-    else if(keyCode == 40 && index < buttonList.size() - 1 && index >= 0)
-    { 
-      index++;
-    }
-    else if(keyCode == 40 && index == buttonList.size() - 1)
-    {
-      index = 0;
-    }
-    print(index);
-    if(key == 32 && index == 0)
-    {
-      gameActive = true;
-      print("game");
-    }
-    else if(key == 32 && index == 1)
-    {
-      //tutorialActive = true;
-      //print("tutorial");
-    }
-    else if(key == 32 && index == 2)
-    {
-       print("exit");
-       exit();
-    }
+      if(keyCode == 38 && index == 4)
+      { 
+        index = 4;
+      }
+      else if(keyCode == 38 && index == 3)
+      {
+        index = 3;
+      }
+      else if(keyCode == 40 && index == 3)
+      { 
+        index = 4;
+      }
+      else if(keyCode == 40 && index == 4)
+      {
+        index = 3;
+      }
+      if(key == 32 && index == 3)
+      {
+        songNumber++;
+        if(songNumber > 3)
+        {  
+          songNumber = 1;
+        }
+      }
+      else if(key == 32 && index == 4)
+      {
+        //Return to MainMenu
+        gameMenu = true;
+        settingsMenu = false;
+        ShowButton();
+        setup();
+        Settings();
+      }
+    }    
+  }
+  
+  void Settings()
+  {
+    clear();
+    background(backgroundColor);
+    stroke(0);
+    strokeWeight(4);
+    fill(255);
+    rect(width / 2,height / 2,layer1,layer1);
+    strokeWeight(2);
   }
   
   
