@@ -12,11 +12,8 @@ Score score;
 PFont font;
 Button button;
 Game game;
-<<<<<<< HEAD
 MainMenu menu;
-=======
 SampleBank samplebank;
->>>>>>> 3771be6b748929cbbcbe80b6575f8e58959fc3d7
 
 Animation animation;
 
