@@ -29,7 +29,7 @@ public class ObstacleController {
         }
         obstacles.add(new Obstacle(24, randomLane, 4));  //spawn object
         
-        if (score.multiplier >= 8) {
+        if (score.multiplier >= 4 || random(100) < 40) {
           n = (int)random(1, 4);
           switch(n)
           {

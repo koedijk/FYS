@@ -27,7 +27,7 @@ public class Obstacle {
    if(obstaclePositionx <= -12) {
         obstacles.remove(counter);
    }
-   if(!rythmGame){
+   if(!rythmGame && character.invinsibleTimer <= 0){
     //collide with player
     if ((obstaclePositionx-characterSpriteWidth/2 < character.characterPositionx+obstacleSpeed && obstaclePositionx+characterSpriteWidth/2 > character.characterPositionx) && 
         obstaclePositiony == character.characterPositiony) {

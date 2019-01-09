@@ -17,7 +17,10 @@ public class Character
   float frameCounter = 0;
   float characterPositionx = 100;
   float characterPositiony = lane2;
-  
+  float characterPositionyOffset = 0;
+  float yPosJump = 120;
+  int invinsibleTimer = 0;
+   
   public void setupCharacter()
   {
     characterAnimation = new Animation("animation/surfer/surfer.png", 1, 2);
@@ -86,6 +89,18 @@ public class Character
   }
   
   public void drawCharacter(){
+    if (miniGame.gameStart == false) {
+      characterPositionyOffset = yPosJump;
+      fill(0);
+      ellipse(characterPositionx, characterPositiony, 42, 16);
+      fill(255);
+      invinsibleTimer = 12;
+    } else {
+      characterPositionyOffset = 0;
+    }
+    
+    if (invinsibleTimer > 0) invinsibleTimer--;
+    
     if(moveUp == true)
     {
       changePosition -= 4;
@@ -108,7 +123,7 @@ public class Character
     }
     else
     {
-      characterAnimation.DrawAnimation(true, 10, characterPositionx, characterPositiony-characterLane);
+      characterAnimation.DrawAnimation(true, 10, characterPositionx, characterPositiony+characterLane-characterPositionyOffset);
     }
   }
 }
