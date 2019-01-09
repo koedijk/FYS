@@ -44,6 +44,7 @@ class Score {
   public void SetMultiplier(int i)
   {
     multiplier = i;
+    if (multiplier > 16) multiplier = 16;
   }
   
   void scoreText()

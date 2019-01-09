@@ -29,7 +29,8 @@ public class ObstacleController {
         }
         obstacles.add(new Obstacle(24, randomLane, 4));  //spawn object
         
-        if (score.multiplier >= 4 || random(100) < 40) {
+        if ((score.currentScore >= 2500 && random(100) < 25) || (score.currentScore >= 10000 && random(100) < 50) && 
+            (score.currentScore >= 50000 && random(100) < 75) || random(100) < 10) { // currentScore
           n = (int)random(1, 4);
           switch(n)
           {
