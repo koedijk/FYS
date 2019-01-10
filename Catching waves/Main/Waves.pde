@@ -37,7 +37,7 @@ public class Waves
     fill(255);
     // A simple way to draw the wave with an ellipse at each location
     for (int x = 0; x < yvalues.length; x++) {
-      rect(x*xspacing, height/2+yvalues[x] -20, 16, 16);
+      rect(x*xspacing, height/2+yvalues[x] - 20, 16, 16);
       rect(x*xspacing, height/2+yvalues[x] + 80, 16, 16);
       rect(x*xspacing, height/2+yvalues[x] + 180, 16, 16);
       rect(x*xspacing, height/2+yvalues[x] + 280, 16, 16);

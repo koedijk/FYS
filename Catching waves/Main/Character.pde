@@ -92,7 +92,7 @@ public class Character
     if (miniGame.gameStart == false) {
       characterPositionyOffset = yPosJump;
       fill(0);
-      ellipse(characterPositionx, characterPositiony, 42, 16);
+      ellipse(characterPositionx, characterPositiony+30+waves.yvalues[10], 42, 16);  //draw dropshadow
       fill(255);
       invinsibleTimer = 12;
     } else {
@@ -123,7 +123,7 @@ public class Character
     }
     else
     {
-      characterAnimation.DrawAnimation(true, 10, characterPositionx, characterPositiony+characterLane-characterPositionyOffset);
+      characterAnimation.DrawAnimation(true, 10, characterPositionx, characterPositiony+characterLane-characterPositionyOffset+waves.yvalues[10]);
     }
   }
 }
