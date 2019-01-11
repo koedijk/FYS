@@ -1,28 +1,19 @@
 public class Background {
-  PImage [] background = new PImage[2];
-  int bgSpeed = 2;
-  float [] bg = new float [2];{
- 
+  float cloudY = random(50);
+  float cloudX = random(width);
+  float bgSpeed = max(cloudY/12.5, 2);
+  PImage background  = loadImage ("animation/waves/Cloud.png");
+
   
-for (int i = 0; i < 2; i++)
-{
-  background [i] = loadImage ("animation/waves/Cloud.png");
-  bg[i] = width * i;
-} 
-  }
-  
-void drawBackground(){
-  for (int j = 0; j < bg.length; j++)
-   {
-     image(background [j], bg [j], 0);
-     bg [j] -= bgSpeed;
+  void drawBackground(){
+     image(background, cloudX, cloudY);
+     cloudX -= bgSpeed;
      
-     if(bg [j] + width <= 0)
+     if(cloudX+60 <= 0)
      {
-       bg[j] = width;
+       cloudX = width+60;
+       cloudY = random(50);
+       bgSpeed = max(cloudY/12.5, 2);
      }
-}
-
-
-}
+  }
 }

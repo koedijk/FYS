@@ -4,7 +4,12 @@ class Game
   {
     button = new Button();
     score = new Score();
-    background = new Background();
+    background1 = new Background();
+    background2 = new Background();
+    background3 = new Background();
+    background4 = new Background();
+    background5 = new Background();
+    background6 = new Background();
     button.Setup();
     score.Start();
     waves = new Waves();
@@ -20,7 +25,14 @@ class Game
   void drawGame()
   {
     background(73, 149, 255);
-    background.drawBackground();
+    
+      background1.drawBackground();
+      background2.drawBackground();
+      background3.drawBackground();
+      background4.drawBackground();
+      background5.drawBackground();
+      background6.drawBackground();
+    
     //obstacles
     obstacleController.controlObstacles();
     
