@@ -1,4 +1,4 @@
-color backgroundColor = color(65); 
+color backgroundColor = color(73, 149, 255); 
 int layer1 = 450;
 
 public class MainMenu {

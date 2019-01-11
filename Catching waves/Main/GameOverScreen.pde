@@ -11,7 +11,7 @@ public class GameOverScreen {
     tint(255);
     textFont(fontLarge);
     textAlign(CENTER);
-    text("You are DEAD", width/2, height/3);
+    text("GAME OVER", width/2, height/3);
     
     textFont(fontSmall);
     textAlign(RIGHT);

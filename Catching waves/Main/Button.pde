@@ -18,7 +18,7 @@ class Button
   {
     backgroundColor = color(65);
     rectColor = color(100);
-    rectHighlight = color(255);  
+    rectHighlight = color(150, 210, 255);  
     //Adding New Button to list and gives X,Y,Width,Heigth to set location via ButtonData Class.
     //Start Button
     buttonList.add(new ButtonData(400,200,150,50));
