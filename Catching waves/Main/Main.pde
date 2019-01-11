@@ -11,6 +11,7 @@ Tutorial tutorial;
 Score score;
 PFont font;
 Button button;
+Background background;
 Game game;
 MainMenu menu;
 SampleBank samplebank;

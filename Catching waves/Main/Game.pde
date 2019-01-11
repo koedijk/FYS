@@ -4,6 +4,7 @@ class Game
   {
     button = new Button();
     score = new Score();
+    background = new Background();
     button.Setup();
     score.Start();
     waves = new Waves();
@@ -19,7 +20,7 @@ class Game
   void drawGame()
   {
     background(73, 149, 255);
-  
+    background.drawBackground();
     //obstacles
     obstacleController.controlObstacles();
     

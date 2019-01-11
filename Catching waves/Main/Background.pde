@@ -1,4 +1,4 @@
-public class Background{
+public class Background {
   PImage [] background = new PImage[2];
   int bgSpeed = 2;
   float [] bg = new float [2];{
@@ -6,12 +6,12 @@ public class Background{
   
 for (int i = 0; i < 2; i++)
 {
-  background [i] = loadImage ("animation/waves/Achtergrond.png");
+  background [i] = loadImage ("animation/waves/Cloud.png");
   bg[i] = width * i;
 } 
   }
   
-void background(){
+void drawBackground(){
   for (int j = 0; j < bg.length; j++)
    {
      image(background [j], bg [j], 0);
