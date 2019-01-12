@@ -5,7 +5,7 @@ class Button
   color currentColor;
   ArrayList<ButtonData> buttonList = new ArrayList<ButtonData>(); 
   int index = 0;
-  int AmountMainMenuButtons = 3;
+  int AmountMainMenuButtons = 2;
   //Tutorial tutorial;
   public boolean tutorialActive = false;
   boolean gameActive = false;
@@ -23,14 +23,10 @@ class Button
     //Adding New Button to list and gives X,Y,Width,Heigth to set location via ButtonData Class.
     //Start Button
     buttonList.add(new ButtonData(400,200,150,50));
-    //Settings Button
-    buttonList.add(new ButtonData(400,300,150,50));
     //Exit Button
+    buttonList.add(new ButtonData(400,300,150,50));
+    //Highscore
     buttonList.add(new ButtonData(400,400,150,50));
-    //Selected Song number 
-    buttonList.add(new ButtonData(400,250,150,50));
-    //Return Button in Settings
-    buttonList.add(new ButtonData(400,350,150,50));
     ShowButton();
   }
   
@@ -45,10 +41,11 @@ class Button
     } else if(gameMenu) {
       Settings();
       HighlightButton();
-    } else if(settingsMenu){
-      Settings();    
-      HighlightButton();
+      textAlign(CENTER);
+      text("Highscore:", buttonList.get(2).data.get(0),buttonList.get(2).data.get(1)-10);
+      text(score.highScore, buttonList.get(2).data.get(0),buttonList.get(2).data.get(1)+10);
     }
+    
   }
   
 
@@ -69,40 +66,19 @@ class Button
     
     switch(index)
     {
-      case 0:
+      case 0:  // start
         fill(rectHighlight);
         rect(buttonList.get(index).data.get(0),buttonList.get(index).data.get(1),buttonList.get(index).data.get(2),buttonList.get(index).data.get(3));        
         fill(rectColor);
         rect(buttonList.get(1).data.get(0),buttonList.get(1).data.get(1),buttonList.get(1).data.get(2),buttonList.get(1).data.get(3));
-        rect(buttonList.get(2).data.get(0),buttonList.get(2).data.get(1),buttonList.get(2).data.get(2),buttonList.get(2).data.get(3));
+        //rect(buttonList.get(2).data.get(0),buttonList.get(2).data.get(1),buttonList.get(2).data.get(2),buttonList.get(2).data.get(3));
         break;
-      case 1:
+      case 1:   // exit
         fill(rectHighlight);
         rect(buttonList.get(index).data.get(0),buttonList.get(index).data.get(1),buttonList.get(index).data.get(2),buttonList.get(index).data.get(3));        
         fill(rectColor);
         rect(buttonList.get(0).data.get(0),buttonList.get(0).data.get(1),buttonList.get(0).data.get(2),buttonList.get(0).data.get(3));
-        rect(buttonList.get(2).data.get(0),buttonList.get(2).data.get(1),buttonList.get(2).data.get(2),buttonList.get(2).data.get(3));
-        break;
-      case 2:
-        fill(rectHighlight);
-        rect(buttonList.get(index).data.get(0),buttonList.get(index).data.get(1),buttonList.get(index).data.get(2),buttonList.get(index).data.get(3));        
-        fill(rectColor);
-        rect(buttonList.get(0).data.get(0),buttonList.get(0).data.get(1),buttonList.get(0).data.get(2),buttonList.get(0).data.get(3));
-        rect(buttonList.get(1).data.get(0),buttonList.get(1).data.get(1),buttonList.get(1).data.get(2),buttonList.get(1).data.get(3));
-        break;
-       case 3: 
-         fill(rectHighlight);
-         rect(buttonList.get(3).data.get(0),buttonList.get(3).data.get(1),buttonList.get(3).data.get(2),buttonList.get(3).data.get(3));
-         fill(rectColor);
-         rect(buttonList.get(4).data.get(0),buttonList.get(4).data.get(1),buttonList.get(4).data.get(2),buttonList.get(4).data.get(3));
-         break;
-      case 4:
-         fill(rectHighlight);
-         rect(buttonList.get(4).data.get(0),buttonList.get(4).data.get(1),buttonList.get(4).data.get(2),buttonList.get(4).data.get(3));
-         fill(rectColor);
-         rect(buttonList.get(3).data.get(0),buttonList.get(3).data.get(1),buttonList.get(3).data.get(2),buttonList.get(3).data.get(3));
-         break;      
-      default:
+        //rect(buttonList.get(2).data.get(0),buttonList.get(2).data.get(1),buttonList.get(2).data.get(2),buttonList.get(2).data.get(3));
         break;
     }
     if(gameMenu){
@@ -111,24 +87,10 @@ class Button
       textSize(14);
       text("Start Game",buttonList.get(0).data.get(0), buttonList.get(0).data.get(1));
       
-      fill(10); 
-      textAlign(CENTER,CENTER);
-      textSize(14);
-      text("Settings",buttonList.get(1).data.get(0), buttonList.get(1).data.get(1));
-      
       fill(10);
       textAlign(CENTER,CENTER);
       textSize(14);
-      text("Exit",buttonList.get(2).data.get(0), buttonList.get(2).data.get(1));
-    }
-    else if(settingsMenu)
-    {  
-      songString = str(songNumber);
-      fill(10);
-      textAlign(CENTER,CENTER);
-      textSize(14);
-      text("Number: " + songString,buttonList.get(3).data.get(0), buttonList.get(3).data.get(1));
-      text("Return",buttonList.get(4).data.get(0),buttonList.get(4).data.get(1));
+      text("Exit",buttonList.get(1).data.get(0), buttonList.get(1).data.get(1));
     }
   }
   
@@ -163,14 +125,8 @@ class Button
       }
       else if(key == 32 && index == 1)
       {
-        //Settings initialize
-        gameMenu = false;
-        settingsMenu = true;
-        index = 3;
-      }
-      else if(key == 32 && index == 2)
-      {
-         exit();
+        //Exit initialize
+        exit();
       }
     }
     else if(settingsMenu)

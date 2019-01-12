@@ -70,7 +70,7 @@ public class Obstacle {
       waveAnimation.DrawAnimation(false, 18, obstaclePositionx, obstaclePositiony-10);
       specialObject = true;
     }
-    if (gameOver == true) {
+    if (gameOver == true && key == 32) {
       //destroy self
       obstacles.remove(counter);
     }
