@@ -22,6 +22,10 @@ class Score {
   {
     if(!endGame)
     {
+      color c = color(0, 126, 255, 102);
+      
+      float value = alpha(c);
+      fill(value);
       for(int i = 0; i < lines.length; i++)
       {
         text(lines[i],720,80 + 35*i);
@@ -37,6 +41,8 @@ class Score {
          lines = split(newHighScore,' ');
          saveStrings("HighScore.txt",lines);
       }
+      
+      
       text(multiplier,720,120);
     }    
  }
@@ -49,6 +55,11 @@ class Score {
   
   void scoreText()
   {
+    color c = color(0, 126, 255, 102);
+    
+    float value = alpha(c);
+    fill(value);
+    
     textSize(14);
     text("Score:",720, 20);
     textSize(14);

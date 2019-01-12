@@ -16,7 +16,8 @@ class Button
     
   void Setup() 
   {
-    backgroundColor = color(65);
+    backgroundColor = color(150, 210, 255);
+    background(backgroundColor);
     rectColor = color(100);
     rectHighlight = color(150, 210, 255);  
     //Adding New Button to list and gives X,Y,Width,Heigth to set location via ButtonData Class.
@@ -35,11 +36,16 @@ class Button
   
   void Draw()
   {
-    if(gameActive)
-    game.drawGame();  
-    else if(gameMenu)
-    HighlightButton();
-    else if(settingsMenu){
+    background(backgroundColor);
+    rectColor = color(100);
+    rectHighlight = color(150, 210, 255);  
+    ShowButton();
+    if(gameActive) {
+      game.drawGame();  
+    } else if(gameMenu) {
+      Settings();
+      HighlightButton();
+    } else if(settingsMenu){
       Settings();    
       HighlightButton();
     }

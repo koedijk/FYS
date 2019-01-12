@@ -67,4 +67,10 @@ public class ObstacleController {
       }
     return counter;
   }
+  
+  public void obstacleGameOver() {
+    for (int i = 0; i < obstacles.size(); i++) {
+    obstacles.remove(i);
+    }
+  }
 }

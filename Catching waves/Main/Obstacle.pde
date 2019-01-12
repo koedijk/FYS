@@ -70,5 +70,9 @@ public class Obstacle {
       waveAnimation.DrawAnimation(false, 18, obstaclePositionx, obstaclePositiony-10);
       specialObject = true;
     }
+    if (gameOver == true) {
+      //destroy self
+      obstacles.remove(counter);
+    }
   }
 }

@@ -14,10 +14,9 @@ public class GameOverScreen {
     text("GAME OVER", width/2, height/3);
     
     textFont(fontSmall);
-    textAlign(RIGHT);
-    text("Score:           ", width/2, height/2);
-    text("Highscore:           ", width/2, height/2+24);
-    text(score.currentScore, width/2 + 24, height/2);
-    text(score.highScore, width/2 + 24, height/2 + 24);
+    textAlign(CENTER);
+    text("Score: " + score.currentScore, width/2, height/2);
+    text("Highscore: " + score.highScore, width/2, height/2+24);
+    text("Press SPACE to return to Menu", width/2, height/2+96);
   }
 }

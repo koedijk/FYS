@@ -26,12 +26,12 @@ class Game
   {
     background(73, 149, 255);
     
-      background1.drawBackground();
-      background2.drawBackground();
-      background3.drawBackground();
-      background4.drawBackground();
-      background5.drawBackground();
-      background6.drawBackground();
+    background1.drawBackground();
+    background2.drawBackground();
+    background3.drawBackground();
+    background4.drawBackground();
+    background5.drawBackground();
+    background6.drawBackground();
     
     //obstacles
     obstacleController.controlObstacles();
@@ -48,11 +48,20 @@ class Game
     if (gameOver) {
       gameOverScreen.drawScreen();
       score.endGame = true;
+      if (key == 32) {
+        obstacleController.obstacleGameOver();
+        gameOver = false;
+        score.currentScore = 0;
+        score.endGame = false;
+        button.gameActive = false;
+        button.gameMenu = true;
+        clear();
+      }
     }
   }
   
   void moveCharacter()
   {
     character.moveCharacter();
-  }
+   }
 }
