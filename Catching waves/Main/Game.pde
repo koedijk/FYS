@@ -25,6 +25,9 @@ class Game
   void drawGame()
   {
     background(73, 149, 255);
+    fill(150, 210, 255);
+    stroke(255,255,255);
+    rect(0,0,1600,560);
     
     background1.drawBackground();
     background2.drawBackground();
