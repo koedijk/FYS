@@ -1,6 +1,6 @@
 public class Obstacle {
   int state = (int)random(0, 2);
-  int random = (int)random(0,30);
+  int random = (int)random(0,100);
   float obstacleSpeed;
   float obstacleMaxSpeed;
   float obstacleMinSpeed;
@@ -15,7 +15,7 @@ public class Obstacle {
   Obstacle (float tempObstaclePositionx, float tempObstaclePositiony, int tempObstacleSpeed) {
     obstaclePositionx = tempObstaclePositionx+width;
     obstaclePositiony = tempObstaclePositiony;
-    obstacleSpeed = tempObstacleSpeed+int(score.currentScore/5000)+min(score.multiplier/8, 2);
+    obstacleSpeed = tempObstacleSpeed+min(score.currentScore/5000+(score.multiplier)*2.5, 8);
     rockAnimation = new Animation("animation/obstacles/rock.png", 5, 2);
     dolphinAnimation = new Animation("animation/obstacles/dolphin.png", 7, 2);
     waveAnimation = new Animation("animation/obstacles/waves.png", 2, 2);
@@ -31,21 +31,27 @@ public class Obstacle {
     //collide with player
     if ((obstaclePositionx-characterSpriteWidth/2 < character.characterPositionx+obstacleSpeed && obstaclePositionx+characterSpriteWidth/2 > character.characterPositionx) && 
         (obstaclePositiony >= character.changePosition-5 && obstaclePositiony <= character.changePosition+5)) {
-      print("RIP");
+      
       
       if(specialObject) {
-        //if (obstaclePositionx-characterSpriteWidth/2 > character.characterPositionx-obstacleSpeed/2) {
-          samplebank.trigger("PowerupSound1.wav");
-          rythmGame = true;
-          obstacles.remove(counter);
-        //}
-      }else{
-        //if (character.invinsibleTimer > 0) {
-          //obstacles.remove(counter);
-        //} else if (character.moveDown == false && character.moveUp == false) {
+        samplebank.trigger("PowerupSound1.wav");
+        rythmGame = true;
+        obstacles.remove(counter);
+      } else {
+        
+        if (score.multiplier < 1.1) {
           samplebank.trigger("DyingSound.wav");
+          print("RIP");
           gameOver = true;
-        //}
+          obstacles.remove(counter);
+          fill(color(255, 0, 0));
+          rect(0, 0, width*2, height*2);
+        } else {
+          obstacles.remove(counter);
+          fill(color(255, 0, 0));
+          rect(0, 0, width*2, height*2);
+          score.multiplier = 1;
+        }
       }
     }
    }
@@ -53,12 +59,19 @@ public class Obstacle {
   }
   
   public void drawObstacle() {
-    if (score.multiplier <= 4) {
-      i = 3;
-    } else if (score.multiplier > 4) {
-      i = 2;
-    } else {
-      i = 1;
+    
+    //choose between specialobject and regular
+    //i = % chance to become specialobject
+    if (score.multiplier == 1) {
+      i = 25;
+    } else if (score.multiplier == 1.5) {
+      i = 20;
+    } else if (score.multiplier == 2) {
+      i = 13;
+    } else if (score.multiplier == 2.5) {
+      i = 5;
+    } else if (score.multiplier == 3) {
+      i = -1;
     }
     if(random > i){
     if (state == 0) {
@@ -66,7 +79,7 @@ public class Obstacle {
     } else {
       dolphinAnimation.DrawAnimation(true, 5, obstaclePositionx, obstaclePositiony-10);
     }
-    } else if(random <= i && score.multiplier != 16){
+    } else {
       waveAnimation.DrawAnimation(false, 18, obstaclePositionx, obstaclePositiony-10);
       specialObject = true;
     }

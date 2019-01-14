@@ -18,7 +18,7 @@ public class Rythmic_Spawning{
   
   private int keyNumber = 0;
   public int maxObjects = 6;
-  public int speed = 5;
+  public float speed = 5;
   int targerLocationX = 100;
   
   public Rythmic_Objects[] Objects = new Rythmic_Objects[maxObjects];
@@ -81,7 +81,7 @@ public class Rythmic_Spawning{
   //Spawns the objects and keeps them moving with the given speed
   private void SpawnObjects() {
     for(int i = 0; i < maxObjects; i++){
-      Objects[i].x = Objects[i].x-(speed+max(1, min(score.multiplier/2, 4)));
+      Objects[i].x = Objects[i].x-(speed+score.multiplier);
       Objects[i].SpawnImage();
     }
   }
@@ -128,6 +128,6 @@ public class Rythmic_Spawning{
     gamePlaying = false;
     gameStart = true;
     rythmGame = false;
-    score.SetMultiplier(min(score.multiplier*2, score.multiplier+4));  //add to the combo
+    score.SetMultiplier(min(score.multiplier+0.5, 3));  //add to the combo
   }
 }

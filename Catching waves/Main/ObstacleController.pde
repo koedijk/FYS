@@ -6,14 +6,22 @@ public class ObstacleController {
   int counter;
   int  n = 1;
   public int controlObstacles() {
-      if (score.multiplier >= 12) {
-        obstacleSpawnTime = 70;
-      } else {
+      if (score.multiplier == 1) {
         obstacleSpawnTime = 100;
+      } else if (score.multiplier == 1.5) {
+        obstacleSpawnTime = 90;
+      } else if (score.multiplier == 2) {
+        obstacleSpawnTime = 82;
+      } else if (score.multiplier == 2.5) {
+        obstacleSpawnTime = 74;
+      } else if (score.multiplier == 3) {
+        obstacleSpawnTime = 65;
+      }  else  {
+        obstacleSpawnTime = 1;
       }
       
-      if (obstacleTimer >= obstacleSpawnTime) {
-        obstacleTimer = 0; //reset timer
+      if (obstacleTimer <= 0) {
+        obstacleTimer = obstacleSpawnTime-score.currentScore/1500; //reset timer
         n = (int)random(1, 4);
         switch(n)
         {
@@ -29,8 +37,7 @@ public class ObstacleController {
         }
         obstacles.add(new Obstacle(24, randomLane, 4));  //spawn object
         
-        if ((score.currentScore >= 2500 && random(100) < 25) || (score.currentScore >= 10000 && random(100) < 50) && 
-            (score.currentScore >= 50000 && random(100) < 75) || random(100) < 10) { // currentScore
+        if (random(100) < min(score.currentScore/100, 60)+(score.multiplier-1)*10) { // currentScore
           n = (int)random(1, 4);
           switch(n)
           {
@@ -50,7 +57,7 @@ public class ObstacleController {
         }
       }
       
-      obstacleTimer += 1;
+      obstacleTimer--;
       //obstacles loop
       
       //First looks how many objects are in the array and then assigns the objects to their number. running the movement and draw code from those objects.

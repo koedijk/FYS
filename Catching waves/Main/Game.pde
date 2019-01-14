@@ -27,6 +27,7 @@ class Game
     background(73, 149, 255);
     fill(150, 210, 255);
     stroke(255,255,255);
+    noStroke();
     rect(0,0,1600,560);
     
     background1.drawBackground();
@@ -44,7 +45,7 @@ class Game
     
     //starts minigame
     if(rythmGame){
-    miniGame.StartMinigame();
+      miniGame.StartMinigame();
     }
     score.Update();
     
