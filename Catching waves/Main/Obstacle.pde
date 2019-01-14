@@ -18,7 +18,7 @@ public class Obstacle {
     obstacleSpeed = tempObstacleSpeed+min(score.currentScore/5000+(score.multiplier)*2.5, 8);
     rockAnimation = new Animation("animation/obstacles/rock.png", 5, 2);
     dolphinAnimation = new Animation("animation/obstacles/dolphin.png", 7, 2);
-    waveAnimation = new Animation("animation/obstacles/waves.png", 2, 2);
+    waveAnimation = new Animation("animation/obstacles/waves.png", 1, 1);
     
   }
   public int moveObstacle(int counter) {
@@ -80,7 +80,7 @@ public class Obstacle {
       dolphinAnimation.DrawAnimation(true, 5, obstaclePositionx, obstaclePositiony-10);
     }
     } else {
-      waveAnimation.DrawAnimation(false, 18, obstaclePositionx, obstaclePositiony-10);
+      waveAnimation.DrawAnimation(false, 18, obstaclePositionx, obstaclePositiony);
       specialObject = true;
     }
     if (gameOver == true && key == 32) {
