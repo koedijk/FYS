@@ -1,6 +1,6 @@
 import ddf.minim.*;
 import java.util.*;
-
+  
 // A reference to the processing sound engine
 Minim minim = new Minim(this);
 

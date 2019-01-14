@@ -3,6 +3,8 @@ public class GameOverScreen {
   PFont fontSmall = createFont("Arial Bold", 24, true);
   
   void drawScreen() {
+
+    
     fill(255, 0, 0, 80);
     rect(0, 0, width*2, height*2);
     color c = color(0, 126, 255, 102);

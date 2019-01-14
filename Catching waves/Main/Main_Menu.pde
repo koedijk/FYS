@@ -5,7 +5,7 @@ public class MainMenu {
   public boolean menuActive = true;
   
   void Setup()
-  {
+  { 
     background(backgroundColor);
     stroke(0);
     strokeWeight(4);
