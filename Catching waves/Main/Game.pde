@@ -20,6 +20,8 @@ class Game
     //obstacle[0] = new Obstacle(24, lane1, 9);
     waves.waveSetup();
     character.setupCharacter();
+    samplebank.loadMusic("Level Music 1.wav");
+    samplebank.playMusic();
   }
   
   void drawGame()
@@ -36,6 +38,7 @@ class Game
     background4.drawBackground();
     background5.drawBackground();
     background6.drawBackground();
+    
     
     //obstacles
     obstacleController.controlObstacles();
