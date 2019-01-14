@@ -32,6 +32,7 @@ final float lane3 = 600 / 2 + 230;
 final float characterSpriteHeight = 100;
 final float characterSpriteWidth = 100;
 boolean Musicisplaying = false;
+boolean Musicismuted = true;
 
 void setup() {
   samplebank = new SampleBank();

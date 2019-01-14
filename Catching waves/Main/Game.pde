@@ -1,5 +1,7 @@
 class Game
 {  
+
+SampleBank file;
   void gameSetup()
   {
     button = new Button();
@@ -21,17 +23,20 @@ class Game
     waves.waveSetup();
     character.setupCharacter();
     samplebank.loadMusic("Level 3.wav");
-    
   }
   
   void drawGame()
   {
     
     if(!Musicisplaying){
-    samplebank.musicPlayer.rewind();
-    samplebank.playMusic();
-    Musicisplaying = true;
-    samplebank.musicPlayer.loop();
+      samplebank.playMusic();
+      Musicisplaying = true;
+      samplebank.musicPlayer.loop();
+    }
+    if (Musicismuted && gameOver == false) {
+      samplebank.musicPlayer.rewind();
+      samplebank.musicPlayer.unmute();
+      Musicismuted = false;
     }
 
     
@@ -66,7 +71,8 @@ class Game
       score.endGame = true;
       
       if(Musicisplaying){
-      samplebank.musicPlayer.pause();
+      samplebank.musicPlayer.mute();
+      Musicismuted = true;
     }
       
       if (key == 32) {
