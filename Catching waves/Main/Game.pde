@@ -20,12 +20,21 @@ class Game
     //obstacle[0] = new Obstacle(24, lane1, 9);
     waves.waveSetup();
     character.setupCharacter();
-    samplebank.loadMusic("Level Music 1.wav");
-    samplebank.playMusic();
+    samplebank.loadMusic("Level 3.wav");
+    
   }
   
   void drawGame()
   {
+    
+    if(!Musicisplaying){
+    samplebank.musicPlayer.rewind();
+    samplebank.playMusic();
+    Musicisplaying = true;
+    samplebank.musicPlayer.loop();
+    }
+
+    
     background(73, 149, 255);
     fill(150, 210, 255);
     stroke(255,255,255);
@@ -55,6 +64,11 @@ class Game
     if (gameOver) {
       gameOverScreen.drawScreen();
       score.endGame = true;
+      
+      if(Musicisplaying){
+      samplebank.musicPlayer.pause();
+    }
+      
       if (key == 32) {
         obstacleController.obstacleGameOver();
         gameOver = false;
