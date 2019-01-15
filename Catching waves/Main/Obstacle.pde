@@ -47,6 +47,7 @@ public class Obstacle {
           fill(color(255, 0, 0));
           rect(0, 0, width*2, height*2);
         } else {
+          samplebank.trigger("GettingHit.wav");
           obstacles.remove(counter);
           fill(color(255, 0, 0));
           rect(0, 0, width*2, height*2);

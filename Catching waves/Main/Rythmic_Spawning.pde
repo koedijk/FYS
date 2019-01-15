@@ -81,7 +81,7 @@ public class Rythmic_Spawning{
   //Spawns the objects and keeps them moving with the given speed
   private void SpawnObjects() {
     for(int i = 0; i < maxObjects; i++){
-      Objects[i].x = Objects[i].x-(speed+score.multiplier);
+      Objects[i].x = Objects[i].x-(speed+min(score.multiplier*1.5, 4.5));
       Objects[i].SpawnImage();
     }
   }
