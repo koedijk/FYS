@@ -32,13 +32,13 @@ public class Obstacle {
     if ((obstaclePositionx-characterSpriteWidth/2 < character.characterPositionx+obstacleSpeed && obstaclePositionx+characterSpriteWidth/2 > character.characterPositionx) && 
         (obstaclePositiony >= character.changePosition-5 && obstaclePositiony <= character.changePosition+5)) {
       
-      
+//Minigame      
       if(specialObject) {
         samplebank.trigger("PowerupSound1.wav");
         rythmGame = true;
         obstacles.remove(counter);
       } else {
-        
+//Game over of combo verloren        
         if (score.multiplier < 1.1) {
           samplebank.trigger("DyingSound.wav");
           print("RIP");

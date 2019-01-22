@@ -4,6 +4,7 @@ class Game
 SampleBank file;
   void gameSetup()
   {
+//Classes worden aangeroepen    
     button = new Button();
     score = new Score();
     background1 = new Background();
@@ -28,6 +29,7 @@ SampleBank file;
   void drawGame()
   {
     
+//if-statement over het loopen en stoppen van de achtergrond muziek    
     if(!Musicisplaying){
       samplebank.playMusic();
       Musicisplaying = true;
@@ -39,13 +41,14 @@ SampleBank file;
       Musicismuted = false;
     }
 
-    
+//Achtergrond wordt getekend    
     background(73, 149, 255);
     fill(150, 210, 255);
     stroke(255,255,255);
     noStroke();
     rect(0,0,1600,560);
-    
+
+//Laat de wolken zien    
     background1.drawBackground();
     background2.drawBackground();
     background3.drawBackground();

@@ -1,3 +1,4 @@
+//Classes worden aangeroepen
 Waves waves;
 Rythmic_Spawning miniGame;
 Character character;
@@ -11,6 +12,7 @@ Tutorial tutorial;
 Score score;
 PFont font;
 Button button;
+//Wolken voor de background
 Background background1;
 Background background2;
 Background background3;
@@ -33,6 +35,7 @@ final float characterSpriteHeight = 100;
 final float characterSpriteWidth = 100;
 boolean Musicisplaying = false;
 boolean Musicismuted = true;
+
 
 void setup() {
   samplebank = new SampleBank();

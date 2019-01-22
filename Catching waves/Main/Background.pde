@@ -3,12 +3,12 @@ public class Background {
   float cloudX = random(width);
   float bgSpeed = max(cloudY/40, 2);
   PImage background  = loadImage ("animation/waves/Cloud.png");
-
   
   void drawBackground(){
      image(background, cloudX, cloudY);
      cloudX -= bgSpeed;
      
+//Spawn nog eenn wolk     
      if(cloudX+60 <= 0)
      {
        cloudX = width+60;
