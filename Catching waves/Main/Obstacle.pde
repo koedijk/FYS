@@ -1,4 +1,5 @@
 public class Obstacle {
+  // declareer en initialiseer variabelen
   int state = (int)random(0, 2);
   int random = (int)random(0,100);
   float obstacleSpeed;
@@ -12,6 +13,9 @@ public class Obstacle {
   Animation rockAnimation;
   Animation dolphinAnimation;
   Animation waveAnimation;
+  
+  
+  //constructor
   Obstacle (float tempObstaclePositionx, float tempObstaclePositiony, int tempObstacleSpeed) {
     obstaclePositionx = tempObstaclePositionx+width;
     obstaclePositiony = tempObstaclePositiony;
@@ -19,34 +23,37 @@ public class Obstacle {
     rockAnimation = new Animation("animation/obstacles/rock.png", 5, 2);
     dolphinAnimation = new Animation("animation/obstacles/dolphin.png", 7, 2);
     waveAnimation = new Animation("animation/obstacles/waves.png", 1, 1);
-    
   }
-  public int moveObstacle(int counter) {
+  
+  //beweeg obstakel
+  public void moveObstacle(int counter) {
     obstaclePositionx -= obstacleSpeed;
    
+   //verwijder obstakel als links buiten het scherm
    if(obstaclePositionx <= -12) {
         obstacles.remove(counter);
    }
+   
    if(!rythmGame && character.invinsibleTimer <= 0){
     //collide with player
     if ((obstaclePositionx-characterSpriteWidth/2 < character.characterPositionx+obstacleSpeed && obstaclePositionx+characterSpriteWidth/2 > character.characterPositionx) && 
         (obstaclePositiony >= character.changePosition-5 && obstaclePositiony <= character.changePosition+5)) {
       
-//Minigame      
+//Minigame ramp      
       if(specialObject) {
         samplebank.trigger("PowerupSound1.wav");
         rythmGame = true;
         obstacles.remove(counter);
       } else {
-//Game over of combo verloren        
-        if (score.multiplier < 1.1) {
+//Game over of combo verliezen        
+        if (score.multiplier < 1.1) { // verlies leven (alsof je die had lololololol)
           samplebank.trigger("DyingSound.wav");
           print("RIP");
           gameOver = true;
           obstacles.remove(counter);
           fill(color(255, 0, 0));
           rect(0, 0, width*2, height*2);
-        } else {
+        } else { // die you mortal FOOL!!!
           samplebank.trigger("GettingHit.wav");
           obstacles.remove(counter);
           fill(color(255, 0, 0));
@@ -56,13 +63,13 @@ public class Obstacle {
       }
     }
    }
-    return(counter);
   }
   
+  //teken obstakel op het scherm
   public void drawObstacle() {
     
-    //choose between specialobject and regular
-    //i = % chance to become specialobject
+    //kies tussen specialobject and normaal
+    //hoe hoger de multiplier(combo) hoe lager de kans op ramps
     if (score.multiplier == 1) {
       i = 25;
     } else if (score.multiplier == 1.5) {
@@ -72,20 +79,24 @@ public class Obstacle {
     } else if (score.multiplier == 2.5) {
       i = 5;
     } else if (score.multiplier == 3) {
-      i = -1;
+      i = -1;  // geen kans op ramps
     }
+    
     if(random > i){
-    if (state == 0) {
-      rockAnimation.DrawAnimation(false, 10, obstaclePositionx, obstaclePositiony-10);
+      //teken normaal obstakel
+      if (state == 0) {
+        rockAnimation.DrawAnimation(false, 10, obstaclePositionx, obstaclePositiony-10);
+      } else {
+        dolphinAnimation.DrawAnimation(true, 5, obstaclePositionx, obstaclePositiony-10);
+      }
     } else {
-      dolphinAnimation.DrawAnimation(true, 5, obstaclePositionx, obstaclePositiony-10);
-    }
-    } else {
+      //teken ramp 
       waveAnimation.DrawAnimation(false, 18, obstaclePositionx, obstaclePositiony);
       specialObject = true;
     }
+    
     if (gameOver == true && key == 32) {
-      //destroy self
+      //kys
       obstacles.remove(counter);
     }
   }

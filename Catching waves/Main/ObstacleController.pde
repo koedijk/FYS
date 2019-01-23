@@ -1,11 +1,15 @@
 public class ObstacleController {
+  // declareer en initialiseer variabelen
   int obstacleTimer = 0;
   int obstacleSpawnTime = 100;
   float randomLane = 0;
   float randomLane2 = 0;
   int counter;
   int  n = 1;
-  public int controlObstacles() {
+  
+  //spawn obstakels
+  public void controlObstacles() {
+      //zet max voor spawn timer op basis van multiplier(combo)
       if (score.multiplier == 1) {
         obstacleSpawnTime = 100;
       } else if (score.multiplier == 1.5) {
@@ -20,9 +24,10 @@ public class ObstacleController {
         obstacleSpawnTime = 1;
       }
       
+      //spawn obstakels
       if (obstacleTimer <= 0) {
-        obstacleTimer = obstacleSpawnTime-score.currentScore/1500; //reset timer
-        n = (int)random(1, 4);
+        obstacleTimer = obstacleSpawnTime-score.currentScore/1500; //reset timer ook afhankelijk van de huidige score
+        n = (int)random(1, 4); // kies een lane
         switch(n)
         {
           case 1:
@@ -37,7 +42,9 @@ public class ObstacleController {
         }
         obstacles.add(new Obstacle(24, randomLane, 4));  //spawn object
         
-        if (random(100) < min(score.currentScore/100, 60)+(score.multiplier-1)*10) { // currentScore
+        // spawn mogelijk een tweede obstakel
+        //hoe hoger de huidige score en hoe hoger de multiplier(combo) hoe groter de kans op een tweede obstakel
+        if (random(100) < min(score.currentScore/100, 60)+(score.multiplier-1)*10) {
           n = (int)random(1, 4);
           switch(n)
           {
@@ -52,29 +59,27 @@ public class ObstacleController {
                 break;
           }
           if (randomLane2 != randomLane) {
-            obstacles.add(new Obstacle(24, randomLane2, 4));  //spawn object
+            obstacles.add(new Obstacle(24, randomLane2, 4));  //spawn object alleen op een nieuwe lane
           }
         }
       }
       
+      // tel timer af
       obstacleTimer--;
       //obstacles loop
       
-      //First looks how many objects are in the array and then assigns the objects to their number. running the movement and draw code from those objects.
+      //Beweeg alle objecten in array "obstacles"
       for (int i = 0; i < obstacles.size(); i++) {  
         Obstacle obst = obstacles.get(i);
         if (!gameOver) {
-           obst.moveObstacle(i);
+           obst.moveObstacle(i); // beweeg obstakel
         }
-        else 
-        {
-          counter = 0;
-        }
-        obst.drawObstacle();
+        obst.drawObstacle();  // teken obstakel op het scherm
       }
-    return counter;
   }
   
+  
+  //vernietig alle obstakels bij game over MUHAHAHAHAHAHA
   public void obstacleGameOver() {
     for (int i = 0; i < obstacles.size(); i++) {
     obstacles.remove(i);

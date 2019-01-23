@@ -53,7 +53,7 @@ class Tutorial
       {
         waves.drawWaves();
         character.drawCharacter();
-        obstacleCounter = obstacleController.controlObstacles();
+        //obstacleCounter = obstacleController.controlObstacles();
       }
       if(obstacleCounter >= 10)
       {
